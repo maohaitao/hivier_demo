@@ -1,0 +1,71 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.bikemanage"/>
+    <context:property-placeholder location="classpath:project.properties"/>
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <mvc:resources mapping="/pages/**" location="/pages/"/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/pages/"/>
+        <property name="suffix" value=".html"/>
+    </bean>-->
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10240000"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <aop:config proxy-target-class="true"/>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <!--<bean id="jobFactory" class="com.banana.common.quartz.QuartzJobFactory"/>
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.banana.common.quartz.SimpleJobDetail"/>
+    </bean>
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="startDelay" value="0"/>
+        <property name="repeatInterval" value="1"/>
+        <property name="repeatCount" value="0"/> &lt;!&ndash; 执行一次 &ndash;&gt;
+    </bean>
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
+        <property name="jobFactory" ref="jobFactory"/> &lt;!&ndash; 重写工厂模式, 支持spring依赖注入 &ndash;&gt;
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTrigger"/>
+            </list>
+        </property>
+    </bean>
+-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/banana/**"/>
+            <mvc:mapping path="/login"/>
+            <bean class="com.bikemanage.common.interceptor.LogInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.bikemanage.common.interceptor.SessionInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/pages/**"/>
+            <mvc:exclude-mapping path="/statis/**"/>
+            <bean class="com.bikemanage.common.interceptor.ErrorInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <import resource="spring-dubbo.xml" />
+</beans>

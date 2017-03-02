@@ -1,0 +1,26 @@
+angular.callbacks._0({
+	"status": 200,
+	"menus": [
+		{"id": 0, "label": "Dashboards", "icon": "fa-th-large", "url":"", "rightLabel":"", "rightLabelClass":"", "subMenus":[
+			{"id": 0, "label": "Dashboards v.1", "icon": "", "url":"index.html", "rightLabel":"", "rightLabelClass":""},
+			{"id": 1, "label": "Dashboards v.2", "icon": "", "url":"index.html", "rightLabel":"", "rightLabelClass":""},
+			{"id": 2, "label": "Dashboards v.3", "icon": "", "url":"index.html", "rightLabel":"", "rightLabelClass":""},
+			{"id": 3, "label": "Dashboards v.4", "icon": "", "url":"index.html", "rightLabel":"", "rightLabelClass":""},
+			{"id": 4, "label": "Dashboards v.5", "icon": "", "url":"index.html", "rightLabel":"", "rightLabelClass":""}
+		]},
+		{"id": 1, "label": "Graphs", "icon": "fa-bar-chart-o", "url":"", "rightLabel":"", "rightLabelClass":"", "subMenus":[
+			{"id": 0, "label": "Flot Charts", "icon": "", "url":"#", "rightLabel":"", "rightLabelClass":""},
+			{"id": 1, "label": "Morris.js Charts", "icon": "", "url":"#", "rightLabel":"", "rightLabelClass":""},
+			{"id": 2, "label": "Rickshaw Charts", "icon": "", "url":"#", "rightLabel":"", "rightLabelClass":""},
+			{"id": 3, "label": "Chart.js", "icon": "", "url":"#", "rightLabel":"", "rightLabelClass":""},
+			{"id": 4, "label": "Chartist", "icon": "", "url":"#", "rightLabel":"", "rightLabelClass":""}
+		]},
+		{"id": 2, "label": "Mailbox", "icon": "fa-envelope", "url":"", "rightLabel":"16/24", "rightLabelClass":"label-warning", "subMenus":[
+			{"id": 0, "label": "Inbox", "icon": "", "url":"", "rightLabel":"", "rightLabelClass":""},
+			{"id": 1, "label": "Email view", "icon": "", "url":"", "rightLabel":"", "rightLabelClass":""},
+			{"id": 2, "label": "Compose email", "icon": "", "url":"", "rightLabel":"", "rightLabelClass":""},
+			{"id": 3, "label": "Email templates", "icon": "", "url":"", "rightLabel":"", "rightLabelClass":""}
+		]},
+		{"id": 0, "label": "Layouts", "icon": "fa fa-diamond", "url":"layouts.html", "rightLabel":"", "rightLabelClass":""}
+	]
+})

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="userCenter" />
+    <!-- 使用multicast广播注册中心暴露发现服务地址 -->
+
+    <!-- <dubbo:registry protocol="zookeeper" address="${dabbo.address}"/>-->
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+
+    <!--<dubbo:registry address="zookeeper://127.0.0.1:2181"  />-->
+    <dubbo:registry address="${zookeeper.url}"  />
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" />
+    <!--<dubbo:protocol name="dubbo" port="20880" />-->
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+
+    <!--sns相关-->
+
+    <dubbo:reference id="tAccountServiceImpl" interface="com.bike.user.service.TAccountService" />
+
+    <dubbo:reference id="tAccountHuanxinServiceImpl" interface="com.bike.user.service.TAccountHuanxinService" />
+
+    <dubbo:reference id="tAccountBindSignServiceImpl" interface="com.bike.user.service.TAccountBindSignService" />
+
+    <dubbo:reference id="iDServiceImpl" interface="com.bike.user.service.IDService" />
+
+    <dubbo:reference id="bananaVersionInfoServiceImpl" interface="com.bike.user.service.BananaVersionInfoService" />
+
+    <dubbo:reference id="bananaFeedbackServiceImpl" interface="com.bike.user.service.BananaFeedbackService" />
+
+    <dubbo:reference id="umengUUIdInfoServiceImpl" interface="com.bike.user.service.UmengUUIdInfoService" />
+
+    <!--sns相关-->
+    <dubbo:reference id="basnsAccountFollowServiceImpl" interface="com.bike.sns.service.BasnsAccountFollowService" />
+
+    <dubbo:reference id="basnsAccountRecommendServiceImpl" interface="com.bike.sns.service.BasnsAccountRecommendService" />
+
+    <dubbo:reference id="basnsAccountLikeServiceImpl" interface="com.bike.sns.service.BasnsAccountLikeService" />
+
+    <dubbo:reference id="basnsGameTogetherServiceImpl" interface="com.bike.sns.service.BasnsGameTogetherService" />
+
+    <dubbo:reference id="basnsAccountListServiceImpl" interface="com.bike.sns.service.BasnsAccountListService" />
+
+    <dubbo:reference id="basmsAccountTaskServiceImpl" interface="com.bike.sns.service.BasmsAccountTaskService" />
+
+
+    <dubbo:reference id="tRouteLevelServiceImpl" interface="com.bike.route.service.TRouteLevelService" />
+
+    <dubbo:reference id="tRouteResultServiceImpl" interface="com.bike.route.service.TRouteResultService" />
+
+
+    <!-- route相关-->
+    <dubbo:reference id="tAccountRouteServiceImpl" interface="com.bike.route.service.TAccountRouteService" />
+
+    <dubbo:reference id="tRouteMapServiceImpl" interface="com.bike.route.service.TRouteMapService" />
+
+    <dubbo:reference id="tRouteResultBusinessImpl" interface="com.bike.route.business.TRouteResultBusiness" />
+
+    <dubbo:reference id="accountPropsBusinessImpl" interface="com.bike.route.business.AccountPropsBusiness" />
+
+    <dubbo:reference id="accountRouteBusinessImpl" interface="com.bike.route.business.AccountRouteBusiness" />
+
+    <!-- mq-->
+    <dubbo:reference interface="com.bike.mq.BananaMQProducer" id="bananaMQProducer" />
+
+    <!-- 打卡动态相关-->
+    <dubbo:reference id="cardImageDynamicServiceImpl" interface="com.bike.dynamic.service.CardImageDynamicService" />
+
+    <dubbo:reference id="dynamicCommentServiceImpl" interface="com.bike.dynamic.service.DynamicCommentService" />
+
+    <dubbo:reference id="dynamicThumbsupServiceImpl" interface="com.bike.dynamic.service.DynamicThumbsupService" />
+
+    <dubbo:reference id="userTipOffServiceImpl" interface="com.bike.dynamic.service.UserTipOffService" />
+
+    <dubbo:reference id="accountRecommendServiceImpl" interface="com.bike.dynamic.service.AccountRecommendService" />
+
+    <dubbo:reference id="messagePushSettingServiceImpl" interface="com.bike.dynamic.service.MessagePushSettingService" />
+
+    <dubbo:reference id="userMessageService" interface="com.bike.dynamic.service.UserMessageService" />
+
+    <!-- 挑战 -->
+    <dubbo:reference id="challengeBasicServiceImpl" interface="com.bike.activity.service.ChallengeBasicService" />
+
+    <dubbo:reference id="challengeUserSignServiceImpl" interface="com.bike.activity.service.ChallengeUserSignService" />
+
+    <dubbo:reference id="challengeRewardServiceImpl" interface="com.bike.activity.service.ChallengeRewardService" />
+
+    <dubbo:reference id="challengeTargetServiceImpl" interface="com.bike.activity.service.ChallengeTargetService" />
+
+</beans>
