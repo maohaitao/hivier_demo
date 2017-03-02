@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+
+    <meta charset="UTF-8">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../item/static/css/text.css" type="text/css">
+    <link rel="stylesheet" href="../item/static/css/box.css" type="text/css">
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+
+    <!-- Demo styles -->
+    <script src="../item/static/js/myJS.js"></script>
+
+    <script type="text/javascript">
+        function load()
+        {
+            showStatus(5);
+        }
+
+
+        //根据不同状态显示不同的内容
+        function showStatus(status)
+        {
+            var without_you=document.getElementById("without_you");//可惜没有你
+            var div_reward=document.getElementById("div_reward");//奖品发放div
+            var div_reward_detail=document.getElementById("div_reward_detail");//具体奖品div,可能包含多个奖品
+            var div_no_address=document.getElementById("div_no_address");//未填写地址
+            var div_edit_address=document.getElementById("div_edit_address");//已经填写地址
+            var div_winner=document.getElementById("div_winner");//实物奖励获得者div
+
+//            var status=1;//未达标
+//            var status=2;//已达标,未到实物开奖时间
+//            var status=3;//已开奖,未中奖
+//            var status=4;//已中奖,未填写资料
+//            var status=5;//已经填写资料
+
+            if(status==1){
+                without_you.style.display="block";
+                div_reward.style.display="none";
+                div_reward_detail.style.display="none";
+                div_no_address.style.display="none";
+                div_edit_address.style.display="none";
+                div_winner.style.display="none";
+            }else if(status==2){
+                without_you.style.display="none";
+                div_reward.style.display="block";
+                div_reward_detail.style.display="block";
+                div_no_address.style.display="none";
+                div_edit_address.style.display="none";
+                div_winner.style.display="none";
+            }else if(status==3){
+                without_you.style.display="none";
+                div_reward.style.display="block";
+                div_reward_detail.style.display="block";
+                div_no_address.style.display="none";
+                div_edit_address.style.display="none";
+                div_winner.style.display="block";
+            }else if(status==4){
+                without_you.style.display="none";
+                div_reward.style.display="block";
+                div_reward_detail.style.display="block";
+                div_no_address.style.display="block";
+                div_edit_address.style.display="none";
+                div_winner.style.display="block";
+            }else if(status==5){
+                without_you.style.display="none";
+                div_reward.style.display="block";
+                div_reward_detail.style.display="block";
+                div_no_address.style.display="none";
+                div_edit_address.style.display="block";
+                div_winner.style.display="block";
+            }
+        }
+
+
+    </script>
+
+</head>
+<body style="background:#CC4242;">
+<!-- Swiper -->
+
+
+<div style="width: 100%;position: absolute">
+    <div style="background:#CC4242;height: 100%;padding-top:40px;padding-bottom: 40px">
+
+
+        <div style="position:relative;width:100%;height: 100%;padding-left: 40px;padding-right: 40px">
+
+            <div style="width: 100%;position: relative;background:white;">
+                <div id="img_div">
+                    <img width="100%" height="400px;" src="../item/static/img/a.jpg"/>
+                </div>
+                <div style="padding-left: 40px;padding-right: 40px;padding-bottom: 30px;padding-top: 30px">
+
+                    <div>
+                        <span class="text_xlarge text_black">奔跑在校园</span>
+
+
+
+                        <div  class="box box-direction-left-to-right box-align-center" >
+                            <span class="text_xlarge text_black">完赛证明</span>
+                            <img width="50px" height="50px;" src="../item/static/img/results_ic_badge.png" style="margin-left: 20px"/>
+                        </div>
+
+                    </div>
+
+                    <div class="box box-direction-left-to-right box-align-center" style="margin-top: 50px;">
+                        <div class="box item-flex-grow box-align-start box-direction-top-to-bottom" >
+                            <div>
+                                <span class="text_xmiddle text_darkgrey">线上挑战赛</span>
+                            </div>
+
+                            <div class="box  box-align-center box-direction-left-to-right" style="margin-top: 20px">
+                                <span class="text_large text_black">参赛者:</span>
+                                <span class="text_large text_orange" style="margin-left: 25px">Tydia</span>
+                            </div>
+
+
+                        </div>
+                        <div style="text-align: center;margin-right: 0px">
+
+                            <img height="120px" width="120px" src="../item/static/img/a.jpg" class="img-circle"
+                                 style="margin-top: 15px;"/>
+                        </div>
+                    </div>
+                    <div style="margin-top: 50px">
+                        <HR width="100%" SIZE=10 align="center">
+                    </div>
+
+
+                    <div class="box box-direction-top-to-bottom box-align-start" style="margin-top: 50px; background:#ffbf44;">
+                        <div style="margin-bottom: 15px">
+                            <span class="text_xmiddle text_darkgrey">达成所需条件:</span>
+                        </div>
+
+                        <div class="box box-direction-left-to-right box-align-center" style="margin-top: 15px;background:#46A4FF;width: 100%">
+                            <img width="30px" height="30px;" src="../item/static/img/results_ic_finish.png"/>
+                            <span  class="text_xmiddle text_black" style="margin-left: 10px;background:#ffb0b0;">坚持完成累计打卡100天挑战</span>
+                        </div>
+
+                    </div>
+
+                    <div style="margin-top: 50px">
+                        <HR width="100px" SIZE=10 align="left">
+                    </div>
+                    <div class="box box-direction-left-to-right box-align-start">
+                        <div  class="item-flex-grow">
+
+                            <div style="margin-top: 30px">
+                                <span class="text_xmiddle text_darkgrey">香蕉打卡</span>
+                            </div>
+                            <div style="margin-top: 10px">
+                                <span class="text_xmiddle text_darkgrey">线上挑战组委会</span>
+                            </div>
+                            <div style="margin-top: 10px">
+                                <span class="text_middle text_grey" style="font-size: 28px;">完赛日起:2016年12月16日</span>
+                            </div>
+
+
+                        </div>
+
+                        <div style="margin-right: 10px">
+                            <img src="../item/static/img/results_ic_stamp.png" class="img-circle"
+                                 style="margin-top: 0px;"/>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 40px">
+                        <HR width="100%" SIZE=10 align="left">
+                    </div>
+
+                    <div onclick="share()" style="text-align: center;margin-top: 0px;padding-bottom: 20px">
+                        <span id="share"  class="text_large text_orange">告诉朋友们</span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div style="position:relative;width:100%;height: 100%;padding-top:40px;padding-left: 40px;padding-right: 40px;">
+
+            <div style="position:relative;width:100%;height: 100%;background:white;">
+
+                <div style="text-align: left;padding-left: 40px;padding-right: 40px;background:#fff5f2;">
+
+                    <div class="box box-direction-left-to-right box-align-center">
+                        <div class="box box-direction-top-to-bottom box-align-start item-flex-grow" style="text-align: left;padding-top: 30px;padding-bottom: 30px">
+                            <!--<strong class="text_xlarge text_black">奔跑在校园</strong>-->
+                            <!--<strong class="text_xlarge text_black" style="margin-top: 0px">挑战赛</strong>-->
+                            <span class="text_xlarge text_black" style="font-weight:bold">奔跑在校园</span>
+                            <span class="text_xlarge text_black" style="font-weight:bold">挑战赛</span>
+                            <div style="margin-top: 20px">
+                                <span class="text_middle text_darkgrey">共有</span>
+                                <span class="text_middle" style="color: #f23309">1234</span>
+                                <span class="text_middle text_darkgrey">人达成了挑战</span>
+
+
+                            </div>
+                            <span id="without_you" class="text_middle text_darkgrey" style="margin-top: 0px">可惜没有你的份~</span>
+                        </div>
+
+                        <div style="text-align: center">
+                            <img height="170px" width="170px" src="../item/static/img/results_ic_gifts.png"/>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="div_reward" style="padding-left: 40px;padding-right: 40px;margin-top: 60px">
+
+                    <div style="">
+                        <span class=" text_darkgrey" style="font-size: 45px">奖品发放</span>
+                        <div>
+                            <div style="margin-top: 60px;margin-bottom:50px">
+                                <HR width="100%" SIZE=10 align="left">
+                            </div>
+                            <div id="div_reward_detail">
+                                <div>
+                                    <div class="box box-direction-left-to-right box-align-center" style="margin-left: 5px;margin-right: 5px">
+
+                                        <img class="box item-flex-shrink_no img-circle" height="140px" width="140px"
+                                             src="../item/static/img/a.jpg"/>
+
+                                        <div class="box item-flex-grow box-direction-top-to-bottom" style="margin-left: 20px;margin-right: 20px">
+                                            <div class="text_black text_large">飞毛腿皮肤</div>
+                                            <div class="text_darkgrey text_middle" style="margin-top: 15px">2017年12月20日 已发放到皮肤馆</div>
+                                        </div>
+
+                                        <img class="box item-flex-shrink_no" width="40px" height="40px;" src="../item/static/img/results_ic_get.png"/>
+
+                                    </div>
+                                    <div style="margin-top: 50px;margin-bottom: 50px">
+                                        <HR width="100%" SIZE=10 align="left">
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <div class="box box-direction-left-to-right box-align-center" style="margin-left: 5px;margin-right: 5px">
+
+                                        <img class="box item-flex-shrink_no img-circle" height="140px" width="140px"
+                                             src="../item/static/img/a.jpg"/>
+
+                                        <div class="box item-flex-grow box-direction-top-to-bottom" style="margin-left: 20px;">
+                                            <div class="text_black text_large">飞毛腿皮肤</div>
+                                            <div class="text_darkgrey text_middle" style="margin-top: 15px">2017年12月20日 已发放到皮肤馆</div>
+                                        </div>
+
+                                        <img class="box item-flex-shrink_no" width="40px" height="40px;" src="../item/static/img/results_ic_get.png"/>
+
+                                    </div>
+                                    <div style="margin-top: 50px;margin-bottom: 50px">
+                                        <HR width="100%" SIZE=10 align="left">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div id="div_no_address" style="padding-left: 40px;padding-right: 40px;;padding-top: 10px;padding-bottom: 10px">
+                    <div class="box box-direction-left-to-right box-pack-start box-align-center" style="margin-left: 5px;margin-right: 5px">
+                        <span class="text_middle box-direction-left-to-right box item-flex-grow text_orange" >填写实物领取奖励领取信息</span>
+                        <img width="60px" height="60px;" src="../item/static/img/results_ic_next.png"/>
+                    </div>
+                    <div style="margin-top: 50px;margin-bottom: 0px">
+                        <HR width="100%" SIZE=10 align="left">
+                    </div>
+                </div>
+
+                <div id="div_edit_address" style="margin-top: 50px;margin-left: 40px;margin-right: 40px;padding-left: 20px;padding-right:20px;padding-top:50px;padding-bottom:50px;background:#f6f6f6;">
+                    <div class="box  box-pack-start box-align-center" style="margin-left: 5px;margin-right: 5px;">
+
+                        <div class="text_middle text_grey item-flex-grow">你的联系方式</div>
+                        <img width="60px" height="60px;" src="../item/static/img/results_ic_modify.png"/>
+                    </div>
+
+                    <div class="box  box-pack-start box-align-center" style="margin-left: 5px;margin-right: 5px;margin-top: 20px">
+
+                        <div class="text_middle text_grey">名字</div>
+
+                        <div class="text_middle text_grey">12345678901</div>
+                    </div>
+
+                    <div class="box  box-pack-start box-align-center" style="margin-left: 5px;margin-right: 5px;margin-top: 20px">
+
+                        <div class="text_middle text_grey item-flex-grow">广东省广州市天河区珠江新城123号xxoo大厦12楼1314室</div>
+                    </div>
+                </div>
+
+                <div id="div_winner" style="padding-left: 40px;padding-right: 40px;margin-top:100px">
+
+                    <div style="border:1px solid #98989e">
+                        <span class="text_small text_black"
+                              style="float:left;margin-top:-20px;background:white; margin-left: 30px">实物奖励获得者</span>
+                        <div style="padding-top: 15px; padding-bottom: 15px;margin-top: 20px;margin-bottom: 100px">
+                            <div>
+                                <img height="100px" width="100px" class="img-circle" src="../item/static/img/a.jpg"
+                                     style="margin-top:20px;margin-left: 30px"/>
+                                <img height="100px" width="100px" class="img-circle" src="../item/static/img/a.jpg"
+                                     style="margin-top:20px;margin-left: 30px"/>
+                                <img height="100px" width="100px" class="img-circle" src="../item/static/img/a.jpg"
+                                     style="margin-top:20px;margin-left: 30px"/>
+                                <img height="100px" width="100px" class="img-circle" src="../item/static/img/a.jpg"
+                                     style="margin-top:20px;margin-left: 30px"/>
+                                <img height="100px" width="100px" class="img-circle" src="../item/static/img/a.jpg"
+                                     style="margin-top:20px;margin-left: 30px"/>
+                                <img height="100px" width="100px" class="img-circle" src="../item/static/img/a.jpg"
+                                     style="margin-top:20px;margin-left: 30px"/>
+                            </div>
+
+                            <div style="padding-right: 20px;margin-top: 40px">
+                                <span class="text_small text_grey" style="float:left;margin-left: 20px">获奖者1</span>
+                                <span class="text_small text_grey" style="float:left;margin-left: 20px">获奖者1</span>
+                                <span class="text_small text_grey" style="float:left;margin-left: 20px">获奖者1</span>
+                                <span class="text_small text_grey" style="float:left;margin-left: 20px">获奖者1</span>
+                                <span class="text_small text_grey" style="float:left;margin-left: 20px">获奖者1</span>
+                                <span class="text_small text_grey" style="float:left;margin-left: 20px">获奖者1……</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="box  box-pack-start box-direction-top-to-bottom"style="padding-left: 40px;padding-right: 40px;padding-bottom: 50px;margin-top: 20px;">
+                    <div class="text_large text_black" style="margin-top: 20px">活动说明</div>
+
+                    <div class="text_middle text_darkgrey box  box-pack-start" style="margin-top: 20px">1.活动期间,参加限时挑战任务,完成目标步数,即可获得神秘礼盒.<br>2.参与比赛随机出现皮肤和实物奖励(共20份),获得奖励的用户将会收到系统消息提示.<br>3.活动结束后,奖励保留12小时,请及时领取.</div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

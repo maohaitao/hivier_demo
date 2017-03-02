@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="UTF-8">
+    <title>香蕉打卡活动</title>
+
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+       function onload(){
+           window.location="banana://activity/open";//打开某手机上的某个app应用
+       }
+
+       function openApp() {
+
+
+           var the_href="http://www.baidu.com";//获得下载链接
+           window.location="bananapunch://invitation/?id=1";//打开某手机上的某个app应用
+           setTimeout(function(){
+               window.location=the_href;//如果超时就跳转到app下载页
+           },500);
+
+       }
+
+        function callIOS(){
+            var u = navigator.userAgent;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            if(isAndroid==true){
+                alert('是否是Android：'+isAndroid);
+            }else if(isiOS==true){
+                alert('是否是iOS：'+isiOS);
+            }
+
+
+        }
+    </script>
+
+
+</head>
+
+
+<body >
+
+<!--<input id="share" type="button" value="分享">-->
+<input style="width: 200px; height:100px"  type="button" value="打开app"  onclick="openApp()">
+<br>
+<br>
+<input  style="width: 200px; height:100px"
+       type="button" value="调用ios"  onclick="callIOS()">
+</body>
+</html>

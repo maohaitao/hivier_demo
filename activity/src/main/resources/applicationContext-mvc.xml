@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+
+	<!-- 读取项目配置信息 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:/project.properties" />
+
+	<!-- 自动扫描组件 -->
+	<context:component-scan base-package="com.hi.rest" />
+
+	<aop:aspectj-autoproxy />
+
+	<!-- 配置支持注解方式的 Class Handler --><!-- 处理在类级别上的@RequestMapping注解 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
+	<!-- jackson -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean id="mappingJacksonHttpMessageConverter"
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="dateFormat">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="cache" value="true" />
+		<property name="prefix" value="" />
+		<property name="suffix" value=".vm" />
+		<property name="exposeSpringMacroHelpers" value="false" /><!-- 
+			支持宏命令 -->
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="toolboxConfigLocation" value="/WEB-INF/classes/velocitytoolbox.xml"/> 
+	</bean>
+
+	<!-- 配置velocity模板引擎 -->
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="configLocation" value="classpath:velocity-exception.properties" />
+		<property name="resourceLoaderPath" value="/WEB-INF/velocity/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<prop key="runtime.log">${log4j.rootPath}/velocity.log</prop>
+			</props>
+		</property>
+		<property name="overrideLogging" value="false" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760" /><!-- 10M -->
+	</bean>
+	
+	<mvc:resources location="/item/static/" mapping="/item/static/**" />
+
+	<!-- 配置拦截器 -->
+
+	<!--<mvc:interceptors>-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/**" />-->
+			<!--<bean class="com.qibaike.mobile.web.MobileInterceptor">-->
+				<!--<property name="excludes">-->
+					<!--<array>-->
+						<!--<value>/error/(\d+)</value>-->
+						<!--<value>/mobile/static/.*</value>-->
+					<!--</array>-->
+				<!--</property>-->
+			<!--</bean>-->
+		<!--</mvc:interceptor>-->
+
+	<!--</mvc:interceptors>-->
+	
+	
+	
+		<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="/error/exception" />
+		<property name="warnLogCategory" value="WARN" />
+		<property name="defaultStatusCode" value="500" />
+		<property name="exceptionAttribute" value="exception" />
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.beans.ConversionNotSupportedException">/error/500</prop>
+				<prop key="org.springframework.web.HttpMediaTypeNotAcceptableException">/error/406</prop>
+				<prop key="org.springframework.web.HttpMediaTypeNotSupportedException">/error/415</prop>
+				<prop
+					key="org.springframework.http.converter.HttpMessageNotReadableException">/error/400</prop>
+				<prop
+					key="org.springframework.http.converter.HttpMessageNotWritableException">/error/500</prop>
+				<prop
+					key="org.springframework.web.HttpRequestMethodNotSupportedException">/error/405</prop>
+				<prop
+					key="org.springframework.web.bind.MissingServletRequestParameterException">/error/400</prop>
+				<prop key="org.springframework.beans.TypeMismatchException">/error/400</prop>
+				<prop
+					key="org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException">/error/404</prop>
+				<prop
+					key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/fileupload</prop>
+				<prop key="java.lang.Throwable">/error/exception</prop>
+				<prop key="java.lang.Exception">/error/exception</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

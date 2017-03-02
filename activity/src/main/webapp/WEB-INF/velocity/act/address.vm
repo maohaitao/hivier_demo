@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/text.css" type="text/css">
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/box.css" type="text/css">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link href="$!{staticResourcePath}/css/city-picker.css" rel="stylesheet">
+    <link href="$!{staticResourcePath}/css/main.css" rel="stylesheet">
+
+
+    <meta charset="UTF-8">
+    <meta itemprop="image" content="http://www.banana-punch.com/image/website_logo.gif"/>
+    <link rel="icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>联系方式</title>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width)/720;
+                document.write('<meta name="viewport" content="width=720, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', user-scalable=no, target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=720, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=720, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <script type="text/javascript">
+        function clickSave() {
+            // alert("点击保存");
+            postData();
+        }
+        function postData() {
+            var accountId = "$!{accountId}";
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            var citypicker = document.getElementById("city-picker3").value;
+            var detailAddress = document.getElementById("detailAddress").value;
+
+            if (name == "") {
+                alert("姓名不能为空");
+            } else if(name.length>30){
+                alert("名字不能超过30个字符");
+            }else if (phone == "") {
+                alert("电话不能为空");
+            }else if(checkPhone(phone)==false){
+                alert("手机号码有误，请重填");
+            } else if (citypicker == "") {
+                alert("省份不能为空");
+            } else if (detailAddress == "") {
+                alert("地址不能为空");
+            } else {
+                var userAddress = JSON.stringify({
+                    accountId: accountId,
+                    relName: name,
+                    phone_num: phone,
+                    citypicker: citypicker,
+                    detail_address: detailAddress
+                });
+
+                $.ajax({
+                    type: 'get',
+                    url: '$!{projectPath}/activity/act/saveActAddress?param=' + userAddress,
+
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: function (data) {
+                        if (data == '1') {
+//                            alert("保存成功");
+                            saveSuccessHref();
+                        } else {
+                            alert("保存失败");
+                        }
+                    },
+                    error: function (data) {
+                        alert("保存失败");
+                    }
+                });
+            }
+
+
+        }
+        function checkPhone(phone){
+            if(!(/^1[34578]\d{9}$/.test(phone))){
+                return false;
+            }
+        }
+        function saveSuccessHref(){
+            history.back(-1);//不能调用app的重定向方法,没有不会新建历史记录,返回键响应正确
+//            self.location=document.referrer;//客户端没响应
+//            history.go(-1);//能够调用app的重定向方法,但是会多一个历史记录,按返回键会出现多个页面的返回
+
+//            location.href = 'ios://';
+//            history.back();//和go(-1)一样
+        }
+    </script>
+
+</head>
+
+
+<body style="background:#f6f6f6">
+<div>
+
+
+    <div style="background:white; margin-top: 25px;padding-left: 30px;padding-right: 30px">
+        <div class="box box-direction-left-to-right box-align-center" style="padding-top: 20px;">
+            <span class="text_middle text_black">姓名</span>
+            <input type="text" name="name" id="name" value="$!{userAddressInfo.relName}" class="text_middle text_grey item-flex-grow box box-direction-left-to-right"
+                   style="height:80px;text-align:right;border-style:none;margin-left: 20px;padding-right: 20px;">
+        </div>
+        <HR width="100%" SIZE=10 align="center">
+
+        <div class="box box-direction-left-to-right box-align-center" style="padding-bottom: 20px;">
+            <span class="text_middle text_black">电话</span>
+            <input type="text" name="phone" id="phone" value="$!{userAddressInfo.phoneNum}"
+                   class="text_middle text_grey item-flex-grow box box-direction-left-to-right"
+                   style="height:80px;text-align:right;border-style:none;margin-left: 20px;padding-right: 20px;">
+
+        </div>
+    </div>
+
+    <div style="background:white; margin-top: 25px;padding-left: 30px;padding-right: 30px">
+        <div class="box box-direction-left-to-right box-align-center" style="padding-top: 30px;padding-bottom: 20px">
+            <span class="text_middle text_black">省市区</span>
+            <!--<span class="text_middle text_grey" style="flex: 1;display:flex;justify-content: flex-end;;margin-left: 20px">xx省 xx市 xx区</span>-->
+            <div id="distpicker" class="text_middle item-flex-grow box box-direction-right-to-left"
+                 style="margin-left: 20px">
+                <div>
+                    <div style="position: relative;">
+                        #if($userAddressInfo)
+                            <input id="city-picker3" name="city-picker3" class="form-control text_middle text_grey"
+                                   readonly type="text"
+                                   value="$!{userAddressInfo.province}/$!{userAddressInfo.city}/$!{userAddressInfo.county}"
+                                   data-toggle="city-picker">
+
+                        #else
+                            <input id="city-picker3" name="city-picker3" class="form-control text_middle text_grey"
+                                   readonly type="text" value="" data-toggle="city-picker" style="padding-right: 20px;">
+                        #end
+                    </div>
+                </div>
+            </div>
+        </div>
+        <HR width="100%" SIZE=10 align="center">
+
+        <div class="box box-direction-left-to-right box-align-center" style="padding-bottom: 20px;">
+            <span class="text_middle text_black">详细地址</span>
+        ##            <span id="detailAddress" class="text_middle text_grey"
+        ##                  style="flex: 1;display:flex;justify-content: flex-end;margin-left: 20px">$!{userAddressInfo.detailAddress}</span>
+            <input type="text" name="detailAddress" id="detailAddress" value="$!{userAddressInfo.detailAddress}"
+                   class="text_middle text_grey item-flex-grow box box-direction-left-to-right"
+                   style="height:80px;text-align:right;border-style:none;margin-left: 20px;padding-right: 20px;">
+        </div>
+    </div>
+##    <input type="button" value="测试保存" onclick="clickSave()">
+</div>
+
+<script src="$!{staticResourcePath}/js/jquery.js"></script>
+<script src="$!{staticResourcePath}/js/bootstrap.js"></script>
+<script src="$!{staticResourcePath}/js/city-picker.data.js"></script>
+<script src="$!{staticResourcePath}/js/city-picker.js"></script>
+<script src="$!{staticResourcePath}/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="format-detection" content="telephone=no">
+    
+		<meta name="viewport" id="viewport" content="width=device-width,minimum-scale=0.2, maximum-scale=1.0, user-scalable=yes"/>
+		<meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="pragram" content="no-cache">
+        <meta name="apple-itunes-app" content="app-id=874323793">
+        <link rel="stylesheet" href=http://s1.700static.com/store/css/swiper.min.css?700596530600>
+        <link href=http://s1.700static.com/store/css/appwap.css?700596530600 rel="stylesheet" type="text/css">
+        <title>APP</title>
+    </head>
+    <body>
+	<div id="main">
+	<div id="logo"><div>700BIKE</div></div>
+	<div id="down"><div class="down"><a href="http://m.700bike.com/app/download?from=mobile">下载APP</a></div><div class="title"></div></div>
+	
+	<div style="clear:both;"></div>
+	
+	<div id="swiper-wap">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                  <div class="swiper-img">
+                    <img src="http://s1.700static.com/store/css/img/app/p1.jpg" />
+                    <div class="swiper-slide-text">
+                      <div class="swiper-slide-title">
+                        数据记录
+                      </div>
+                      <div class="swiper-slide-con">
+                        
+                    <div>数据自动记录并上传云端</div>
+                    <div>完整的骑行轨迹</div>
+                    <div>详细的数据统计</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-img">
+                    <img data-src="http://s1.700static.com/store/css/img/app/p2.jpg" class="swiper-lazy">
+					<div class="swiper-lazy-preloader"></div>
+                    <div class="swiper-slide-text">
+                      <div class="swiper-slide-title">
+                        移动报警
+                      </div>
+                      <div class="swiper-slide-con">
+                        
+                    <div>锁车后</div>
+                    <div>当有人移动自行车便会</div>
+                    <div>立刻收到报警信息</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-img">
+                    <img data-src="http://s1.700static.com/store/css/img/app/p3.jpg" class="swiper-lazy">
+					<div class="swiper-lazy-preloader"></div>
+                    <div class="swiper-slide-text">
+                      <div class="swiper-slide-title">
+                        定位/追踪
+                      </div>
+                      <div class="swiper-slide-con">
+                        <div>可随时随地查看爱车位置</div>
+                    <div>实时追踪自行车</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-img">
+                    <img data-src="http://s1.700static.com/store/css/img/app/p4.jpg" class="swiper-lazy">
+					<div class="swiper-lazy-preloader"></div>
+                    <div class="swiper-slide-text">
+                      <div class="swiper-slide-title">
+                        数据排行
+                      </div>
+                      <div class="swiper-slide-con">
+                        <div>查询自己在全国车友中的名次</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+		  
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+      </div>
+      </div>
+    <br/>
+	<br/>
+	<br/>&nbsp;
+	</div>
+	</body>
+    <script type="text/javascript" src="http://s1.700static.com/store/scripts/jquery-1.7.1.min.js"></script>
+      <script type="text/javascript" src="http://s1.700static.com/store/scripts/swiper.min.js?700596530600"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            lazyLoading: true
+        });
+        $(document).ready(function () {
+            //if ((/android /gi).test(navigator.appVersion)) {
+            scale = $(window).width() / 640;
+            $('#viewport').attr('content', 'width=device-width, initial-scale=' + scale + ', minimum-scale=0.2, maximum-scale=1.0,  user-scalable=1')
+            //}
+        });
+    </script>
+</html>

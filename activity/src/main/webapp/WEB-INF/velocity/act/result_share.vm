@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/text.css" type="text/css">
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/box.css" type="text/css">
+    <script src="$!{staticResourcePath}/js/myJS.js"></script>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+    <meta charset="UTF-8">
+    <meta itemprop="image" content="http://www.banana-punch.com/image/website_logo.gif"/>
+    <link rel="icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <title>香蕉打卡</title>
+
+    <!--<style type="text/css">-->
+    <!--&lt;!&ndash;-->
+    <!--@import url(../css/text.css);-->
+    <!--/*这里是通过@import引用CSS的样式内容*/-->
+    <!--&ndash;&gt;-->
+    <!--</style>-->
+
+
+</head>
+
+
+<body>
+<div class="box box-direction-top-to-bottom box-pack-start" style="height:100%;background:#CC4242;width: 100%;padding: 40px;;position: absolute">
+
+    <div class="item-flex-grow" style="width: 100%;position: relative;background:white;overflow: auto">
+        <div id="img_div">
+            <img width="100%" src="$!{activity.bannerImage}"/>
+        </div>
+        <div style="padding-left: 40px;padding-right: 40px;padding-bottom: 30px;padding-top: 30px">
+
+            <div>
+                <span class="text_xlarge text_black">$!{activity.challengeName}</span>
+
+
+                <div class="box box-direction-left-to-right box-align-center" >
+                    <span class="text_xlarge text_black">完赛证明</span>
+                    <img width="50px" height="50px;" src="$!{staticResourcePath}/img/results_ic_badge.png" style="margin-left: 20px"/>
+                </div>
+
+            </div>
+
+            <div class="box box-direction-left-to-right box-align-center" style="margin-top: 50px;">
+                <div class="box item-flex-grow box-align-start box-direction-top-to-bottom" >
+                    <div>
+                        <span class="text_xmiddle text_darkgrey">线上挑战赛</span>
+                    </div>
+
+                    <div class="box box-direction-left-to-right box-align-center" style="margin-top: 50px">
+                        <span class="text_large text_black">参赛者:</span>
+                        <span class="text_large text_orange" style="margin-left: 25px">$!{activity.nickName}</span>
+                    </div>
+
+
+                </div>
+                <div style="text-align: center;margin-right: 0px">
+
+                    <img height="120px" width="120px" src="$!{activity.userFace}" class="img-circle" style="margin-top: 15px;"/>
+                </div>
+            </div>
+            <div style="margin-top: 50px">
+                <HR width="100%" SIZE=10 align="center">
+            </div>
+
+
+            <div class="box box-direction-top-to-bottom box-align-start" style="margin-top: 50px;">
+                <div style="margin-bottom: 15px">
+                    <span class="text_xmiddle text_grey">达成所需条件:</span>
+                </div>
+
+                #set ($isFirst = true)
+                #foreach( $!{challengeTargetResult} in $!{listChallengeTargetResult})
+                    <div class="box box-direction-left-to-right box-align-center" style=" #if($isFirst==true)margin-top: 15px;#else margin-top: 10px #end ">
+                        <img width="30px" height="30px;"
+                             src="$!{staticResourcePath}/img/results_ic_finish.png"/>
+                                <div class="text_xmiddle text_black"
+                                      style="margin-left: 20px">$!{challengeTargetResult.targetTitle}</div>
+                    </div>
+                    #set ($isFirst = false)
+                #end
+
+            </div>
+
+            <div style="margin-top: 50px">
+                <HR width="100px" SIZE=10 align="left">
+            </div>
+
+            <div class="box box-direction-left-to-right box-align-start">
+                <div class="item-flex-grow">
+
+
+                    <div style="margin-top: 30px">
+                        <span class="text_xmiddle text_darkgrey">香蕉打卡</span>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <span class="text_xmiddle text_darkgrey">线上挑战组委员会颁发</span>
+                    </div>
+                    <div style="margin-top: 10px">
+                        #if($!{isEnd}==1)
+                            <span class="text_middle text_grey">完赛日期:$!{formatEndTime}</span>
+                        #else
+                            <span class="text_middle text_grey">挑战成功日期:$!{formatEndTime}</span>
+                        #end
+                    </div>
+
+
+                </div>
+
+                <div style="margin-right: 10px">
+                    <img src="$!{staticResourcePath}/img/results_ic_stamp.png" class="img-circle"
+                         style="margin-top: 0px;"/>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="box  box-align-center box-direction-left-to-right" style="padding-left:20px;padding-right:20px;position: relative;margin-top: 30px;margin-bottom: 10px;">
+        <div class="box item-flex-grow box-direction-top-to-bottom">
+            <div class="text_middle text_white">香蕉打卡</div>
+
+            <div class="text_middle" style="color: #ffb0b0;margin-top: 15px">一个拼颜值的创意运动打卡方式</div>
+        </div>
+
+        <div onclick="openApp($!{activity.challengeId})" class="text_white text_middle item-flex-grow-no"
+              style="text-align: center;background:#ffbf44;padding-left: 30px;padding-right: 30px;padding-top: 10px;padding-bottom: 10px">
+                现在加入
+
+            </div>
+    </div>
+</div>
+</body>
+</html>

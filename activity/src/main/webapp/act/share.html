@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="../item/static/css/text.css" id="css" type="text/css">
+    <link rel="stylesheet" href="../item/static/css/box.css" type="text/css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+    <script src="../item/static/js/myJS.js"></script>
+    <meta charset="UTF-8">
+    <title>香蕉打卡活动</title>
+
+
+    <script type="text/javascript">
+        //        $("#btn_join")
+        //                .click(
+        //                        function () {
+        //                            // javascript:banana.shareURL("");
+        //                            alert("asdf");
+        //                        });
+
+        function onload() {
+            //判断是否宽屏
+//    var winWide = window.screen.width;
+//    alert(winWide);
+//    var wideScreen = false;
+//    if (winWide <= 500) {//1024及以下分辨率
+//        $("#css").attr("href", "../item/static/css/text_xsmall.css");
+//        alert('小屏');
+//    } else {
+//        $("#css").attr("href", "../item/static/css/text.css");
+//        alert('大屏');
+//        wideScreen = true; //是宽屏
+//    }
+        }
+
+    </script>
+
+
+    <style type="text/css">
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+        }
+
+        .title:before, .title:after {
+            content: ' ';
+            display: inline-block;
+            position: relative;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 21px;
+            vertical-align: middle;
+        }
+
+        .title_normal {
+            font-size: 14px;
+            display: inline-block;
+            color: #000000;
+
+        }
+
+    </style>
+    <style type="text/css">
+        .bottombox {
+            background-color: #CCC;
+            width: 100%;
+        }
+
+        .fixed-bottom {
+            position: fixed;
+            bottom: 0;
+            border: #ccc solid 1px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+    </style>
+</head>
+
+
+<body onload="onload()">
+<div class="box box-direction-top-to-bottom box-pack-start" style="background:#f6f6f6;height: 100%;">
+    <div style="padding-bottom: 200px">
+
+
+        <div id="img_div" position：relative>
+            <img width="100%" src="../item/static/img/a.jpg"/>
+
+        </div>
+
+
+        <div align="top" style="width:100%; margin-bottom: 30px">
+
+            <div class="box box-direction-left-to-right box-pack-start box-align-center"
+                 style="background: white;padding-left:50px;padding-right:50px;padding-bottom: 30px ">
+
+                <div class=" box-direction-top-to-bottom box-pack-start"
+                     style="position:relative;float:left;text-align:left;margin-top: 30px">
+
+                    <span class="text_large text_black" style="font-weight:bold">活动:我要去冒险</span>
+
+                    <div class="text_middle text_grey box box-direction-left-to-right box-pack-start box-align-center"
+                         style="margin-top: 10px">
+                        <img class="img_small" src="../item/static/img/challenge_ic_date.png"/>
+                        <span style="margin-right: 20px;margin-left: 10px">1月10日~2月10日</span>
+                        <img class="img_small" src="../item/static/img/challenge_ic_people.png"/>
+                        <span style="margin-left: 10px">12345</span>
+                    </div>
+
+                </div>
+
+
+                <!--<div style="flex:1;position:relative;float:left;text-align:left;margin-top: 30px">-->
+                <!--<p class="text_middle text_red">距离开始</p>-->
+                <!--<br>-->
+                <!--<p class="text_middle text_red">8天5时30分</p>-->
+                <!--</div>-->
+            </div>
+
+            <div style="width: 100%; text-align: center">
+
+                <div class="title" style="margin-top: 24px;text-align: center">
+                    <span class="text_small">挑战目标</span>
+                </div>
+            </div>
+            <!--<div style="width:100%;position:relative;">-->
+            <!--<HR width="100%" SIZE=10 align="center">-->
+            <!--</div>-->
+
+            <div class="img-rounded"
+                 style="position:relative;background:#ffffff;margin-top:20px;margin-left: 20px;margin-right: 20px;padding-top:30px;padding-bottom:30px;">
+                <div class="box box-direction-left-to-right box-pack-start box-align-center"
+                     style="margin-left: 20px;margin-right: 20px;">
+                    <img style="width: 40px;height: 40px" src="../item/static/img/ic_target_yellowbig.png"/>
+                    <strong class="text_large text_black">挑战期间,累计走路</strong>
+                    <strong class="text_large text_red">666666</strong>
+                    <strong class="text_large text_black">步</strong>
+                </div>
+
+                <div class="box box-direction-left-to-right box-pack-start box-align-center"
+                     style="margin-left: 60px;margin-right: 20px;">
+                    <p class="text_middle text_grey" style="margin-top: 10px;">单日走路>5000步才计入成绩</p>
+                </div>
+
+            </div>
+
+
+            <div style="background: white;padding-top:30px;padding-bottom: 70px ;margin-top: 80px">
+
+                <div style="position:relative;float:left;text-align:left;margin-bottom: 30px;padding-left:30px;padding-right:30px;">
+
+                    <span class="text_large text_black">优胜奖励</span>
+                </div>
+                <HR width="100%" SIZE=10 align="center">
+
+
+                <div class="box box-direction-left-to-right box-pack-start box-align-center"
+                     style="padding-left: 30px;padding-right:30px;margin-top:50px;position: relative">
+                    <div class="box box-direction-top-to-bottom box-pack-start item-flex-shrink_no">
+
+                        <img class="img_xxxlarge" src="../item/static/img/a.jpg"/>
+
+                    </div>
+
+
+                    <div class="box box-direction-top-to-bottom box-pack-start item-flex-grow"
+                         style="padding-left: 30px">
+                        <strong class="text_large text_black">鸡年大吉皮肤</strong>
+
+                        <div class="text_middle text_grey" style="margin-top: 20px">挑战成功的小伙伴将直接获得活动专属皮肤一套皮肤一套皮肤肤一套</div>
+                    </div>
+                </div>
+
+
+                <div class="box box-direction-left-to-right box-pack-start box-align-center"
+                     style="padding-left: 30px;padding-right:30px;margin-top: 50px">
+                    <div class="box box-direction-top-to-bottom box-pack-start item-flex-shrink_no">
+
+                        <img class="img_xxxlarge" src="../item/static/img/a.jpg"/>
+
+                    </div>
+
+
+                    <div class="box box-direction-top-to-bottom box-pack-start item-flex-grow"
+                         style="padding-left: 30px">
+                        <strong class="text_large text_black">鸡年大吉皮肤</strong>
+
+                        <div class="text_middle text_grey" style="margin-top: 20px">挑战成功的小伙伴将直接获得活动专属皮肤一套皮肤一套皮肤肤一套</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="box box-direction-top-to-bottom"
+                 style="background: white;padding-top:30px;padding-bottom: 10px ;margin-top: 40px">
+
+                <div class="box box-direction-left-to-right box-pack-center box-align-center"
+                     style="margin-left: 30px;margin-right: 30px;">
+
+                    <div class="item-flex-grow">
+                        <span class="text_large text_black">最新动态</span>
+                    </div>
+
+                    <div class="item-flex-grow-no">
+                        <span class="text_small text_grey" style="position:relative;">*截至1月6日</span>
+                    </div>
+
+                </div>
+
+
+                <div style="text-align: center" class="box box-direction-top-to-bottom box-pack-start box-align-center">
+                    <div class="box box-direction-left-to-right box-pack-start box-align-start">
+
+
+                        <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%"
+                             class="box box-direction-top-to-bottom item-flex-grow">
+                            <img style="width: 280px;height: 280px" src="../item/static/img/a.jpg"/>
+                            <div style="width: 280px;text-align: center;margin-top: 20px ;"
+                                 class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                <img class="img_large img-circle box item-flex-shrink_no"
+                                     src="../item/static/img/a.jpg"/>
+                                <span class="text_middle"
+                                      style="margin-left: 10px;font-weight:bold;text-align: start;word-wrap:break-word;word-break:break-all; ">AAAAAAAAAAAAAAAAAA
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%"
+                             class="box box-direction-top-to-bottom item-flex-grow">
+                            <img style="width: 280px;height: 280px" src="../item/static/img/a.jpg"/>
+                            <div style="width: 280px;text-align: center;margin-top: 20px ;"
+                                 class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                <img class="img_large img-circle box item-flex-shrink_no"
+                                     src="../item/static/img/a.jpg"/>
+                                <span class="text_middle"
+                                      style="margin-left: 10px;font-weight:bold;text-align: start;word-wrap:break-word;word-break:break-all; ">AAAAAAAAAAAAAAAAAA
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%"
+                             class="box box-direction-top-to-bottom item-flex-grow">
+                            <img style="width: 280px;height: 280px" src="../item/static/img/a.jpg"/>
+                            <div style="width: 280px;text-align: center;margin-top: 20px ;"
+                                 class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                <img class="img_large img-circle box item-flex-shrink_no"
+                                     src="../item/static/img/a.jpg"/>
+                                <span class="text_middle"
+                                      style="margin-left: 10px;font-weight:bold;text-align: start;word-wrap:break-word;word-break:break-all; ">AAAAAAAAAAAAAAAAAA
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-direction-left-to-right box-pack-start box-align-start">
+
+
+                        <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%"   class="box box-direction-top-to-bottom item-flex-grow">
+                            <img style="width: 280px;height: 280px" src="../item/static/img/a.jpg"/>
+                            <div style="text-align: center;margin-top: 20px ;"
+                                 class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                <img class="img_large img-circle box item-flex-shrink_no"
+                                     src="../item/static/img/a.jpg"/>
+                                <div class="text_middle"
+                                     style="margin-left: 10px;font-weight:bold;text-align: start;word-wrap:break-word;word-break:break-all;">
+                                    sdi 你好!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%"   class="box box-direction-top-to-bottom item-flex-grow">
+                            <img style="width: 280px;height: 280px" src="../item/static/img/a.jpg"/>
+                            <div style="text-align: center;margin-top: 20px ;"
+                                 class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                <img class="img_large img-circle box item-flex-shrink_no"
+                                     src="../item/static/img/a.jpg"/>
+                                <div class="text_middle"
+                                     style="margin-left: 10px;font-weight:bold;text-align: start;word-wrap:break-word;word-break:break-all;">
+                                    你好 mee
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%"   class="box box-direction-top-to-bottom item-flex-grow">
+                            <img style="width: 280px;height: 280px" src="../item/static/img/a.jpg"/>
+                            <div style="text-align: center;margin-top: 20px ;"
+                                 class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                <img class="img_large img-circle box item-flex-shrink_no"
+                                     src="../item/static/img/a.jpg"/>
+                                <div class="text_middle"
+                                     style="margin-left: 10px;font-weight:bold;text-align: start;word-wrap:break-word;word-break:break-all;">
+                                    大香蕉大大大香蕉大大大
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div style="background: white;padding-top:30px;padding-bottom: 30px ;margin-top: 40px">
+
+                <div style="position:relative;float:left;text-align:left;margin-bottom: 30px;padding-left:30px;padding-right:30px;">
+
+                    <span class="text_middle text_blcak" style="text-align: left">活动说明</span>
+                </div>
+                <HR width="100%" SIZE=10 align="center">
+                <div style="padding-left:30px;padding-right:30px;" align="left">
+                    <p class="text_middle text_grey">1.挑战成功的小伙伴将直接</p>
+                    <p class="text_middle text_grey">2.挑战成功的小伙套</p>
+                    <p class="text_middle text_grey">3.挑战成功的小伙伴将直接获得套</p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div id="bb" class="bottombox box box-direction-left-to-right box-pack-start box-align-center"
+         style="padding-top: 30px;padding-bottom: 30px;padding-left:10px;padding-right:10px;background:#000000;">
+        <div>
+            <img class="img_xlarge" src="../item/static/img/banana_logo.png"/>
+        </div>
+
+
+        <div class="box box-direction-top-to-bottom box-pack-start item-flex-grow"
+             style="text-align: left;margin-left: 20px;">
+            <div class="text_middle text_white" style="font-weight:bold">香蕉打卡</div>
+
+            <div class="text_middle text_white">马上加入和TA一同挑战</div>
+        </div>
+        <div id="btn_join">
+            <img onclick="openApp(1)" class="img_btn_join" src="../item/static/img/h5_btn_join.png"/>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function fixDown(boxId) {
+        var box = document.getElementById(boxId);
+        var cn = box.className;
+        var bh = box.offsetTop;
+        var wh = document.documentElement.clientHeight;//这里为了兼容IE，所以不能用window.innerHeight;
+        if (bh >= wh) {
+            box.className = cn + " fixed-bottom";
+        } else {
+            box.className = cn;
+        }
+    }
+    window.onload = function () {
+        fixDown("bb");
+    }
+    window.onresize = function () {
+        fixDown("bb");
+    }
+</script>
+</body>
+</html>

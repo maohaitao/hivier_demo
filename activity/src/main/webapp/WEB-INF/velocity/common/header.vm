@@ -1,0 +1,75 @@
+<div style="background: #353535; position: relative;">
+			<div class="nav-icon" onclick="ISeeNav()"></div>
+			<div class="logo">
+				<a href="/news/index"><img
+					src="http://s1.700static.com/mobile/css/news/logo.png" alt="" /></a>
+			</div>
+			<div class="nav"
+				style="display: none; border-top: solid 1px #444444;" id="nav-wrap">
+				<div class="n">
+					<a href="/index" class="current">首页</a>
+				</div>
+				<div class="n">
+					<a href="/news/list/city" class="">城市</a>
+				</div>
+				<div class="n">
+					<a href="/news/list/person" class="">人物</a>
+				</div>
+				<div class="n">
+					<a href="/news/list/cargo" class="">物品</a>
+				</div>
+				<div class="n">
+					<a href="http://bbs.700bike.com" class="">社区</a>
+				</div>
+				<div class="n">
+					<a href="http://www.700store.com" class="">电商</a>
+				</div>
+				<div class="n">
+					<a href="http://app.700bike.com/bikeapp/" class="">APP</a>
+				</div>
+				
+				<div class="clear"></div>
+			</div>
+<!-- 			<div class="search"> -->
+<!-- 				<img src="http://s1.700static.com/mobile/css/img/49x36.png" -->
+<!-- 					onclick="IWantSearch()" /> -->
+<!-- 			</div> -->
+		</div>
+		<div id="div-search-wrap">
+			<div style="float: left; margin-left: 10px; width: 85%;">
+				<input type="text" id="txtKey" maxlength="30" />
+			</div>
+<!-- 			<div class="search-btn" onclick="IBeginSearch()">搜索</div> -->
+			<div class="clear"></div>
+		</div>
+		<script type="text/javascript">
+			function ISeeNav() {
+				var nav = $("#nav-wrap");
+				if (nav.is(":hidden")) {
+					nav.show();
+				} else {
+					nav.hide();
+				}
+			}
+			function IWantSearch() {
+				var wrap = $("#div-search-wrap");
+				if (wrap.is(":hidden")) {
+					wrap.show();
+				} else {
+					wrap.hide();
+				}
+			}
+			function IBeginSearch() {
+				var key = $("#txtKey");
+				if ($.trim(key) == "") {
+					key.focus();
+					return;
+				}
+				location.href = "/News/Search.aspx?q=" + key.val();
+			}
+			$('#txtKey').keydown(function(e) {
+				if (e.keyCode == 13) {
+					IBeginSearch();
+				}
+			});
+		</script>

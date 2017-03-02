@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/text.css" id="css" type="text/css">
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/box.css" id="css" type="text/css">
+    <script src="$!{staticResourcePath}/js/myJS.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+    <meta charset="UTF-8">
+    <meta itemprop="image" content="http://www.banana-punch.com/image/website_logo.gif"/>
+    <link rel="icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <title>香蕉打卡</title>
+
+
+    <style type="text/css">
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+        }
+
+        .title:before, .title:after {
+            content: ' ';
+            display: inline-block;
+            position: relative;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 21px;
+            vertical-align: middle;
+        }
+
+        .title_normal {
+            font-size: 14px;
+            display: inline-block;
+            color: #000000;
+
+        }
+
+    </style>
+    <style type="text/css">
+        .bottombox { background-color: #CCC; width:100%; }
+        .fixed-bottom{ position:fixed; bottom:0; border:#ccc solid 1px; box-shadow:0px 0px 10px #ccc;}
+    </style>
+</head>
+
+
+<body>
+<div class="box box-direction-top-to-bottom box-pack-start" style="background:#f6f6f6;height: 100%;">
+    <div style="padding-bottom: 200px">
+
+
+            <div id="img_div" position：relative>
+                <img width="100%" src="$!{activity.bannerImage}"/>
+
+            </div>
+
+
+            <div align="top" style="width:100%; margin-bottom: 30px">
+
+                <div class="box box-direction-left-to-right box-pack-start box-align-center" style="background: white;padding-left:50px;padding-right:50px;padding-bottom: 30px ">
+
+                    <div class=" box-direction-top-to-bottom box-pack-start" style="position:relative;float:left;text-align:left;margin-top: 30px">
+                        <span class="text_large text_black" style="font-weight:bold">$!{activity.challengeName}</span>
+
+                        <div class="text_middle text_grey box box-direction-left-to-right box-pack-start box-align-center" style="margin-top: 10px">
+                                <img class="img_small" src="$!{staticResourcePath}/img/challenge_ic_date.png"/>
+                                <div style="margin-right: 20px;margin-left: 10px">$!{formatStartTime}~$!{formatEndTime}</div>
+                                <img class="img_small" src="$!{staticResourcePath}/img/challenge_ic_people.png"/>
+                                <div style="margin-left: 10px">$!{activity.joinCount}</div>
+                        </div>
+
+                    </div>
+
+
+##                    <div style="flex:1;position:relative;float:left;text-align:left;margin-top: 30px;display:flex;flex-direction:column-reverse;align-items: flex-start">
+##
+##                        #if($!{status}==0)
+##                            <div class="text_xsmall text_grey"
+##                                 style="flex: 1;display: flex;align-items: center;margin-top: 20px;">
+##                                <span>$!{timeDifference}</span>
+##                            </div>
+##                            <span class="text_middle text_red">距离开始</span>
+##                        #elseif($!{status}==1)
+##                            <div class="text_xsmall text_grey"
+##                                 style="flex: 1;display: flex;align-items: center;margin-top: 20px;">
+##                                <span>$!{timeDifference}</span>
+##                            </div>
+##                            <span class="text_middle text_red">剩余</span>
+##                        #else
+##                            <div onclick="resultClick()" style="flex: 1;display: flex;flex-direction:row;align-items: center;margin-top: 20px;">
+##
+##                                <img style="width: 50px;height: 50px"
+##                                     src="$!{staticResourcePath}/img/challenge_pic_outcome.png"/>
+##                                <span class="text_middle text_red" style="margin-left: 20px">挑战结果</span>
+##                            </div>
+##                        #end
+##
+##                    </div>
+                </div>
+
+
+                <div style="width: 100%; text-align: center">
+
+                    <div class="title" style="margin-top: 24px;text-align: center">
+                        <span class="text_small">挑战目标</span>
+                    </div>
+                </div>
+                <!--<div style="width:100%;position:relative;">-->
+                <!--<HR width="100%" SIZE=10 align="center">-->
+                <!--</div>-->
+                #foreach( $!{challengeTargetResult} in $!{listChallengeTargetResult})
+                    <div class="img-rounded"
+                         style="position:relative;background:#ffffff;margin-top:20px;margin-left: 20px;margin-right: 20px;padding-top:30px;padding-bottom:30px;">
+                        <div class="box box-direction-left-to-right box-pack-start box-align-center" style="margin-left: 20px;margin-right: 20px;">
+                            <img style="width: 40px;height: 40px"
+                                 src="$!{staticResourcePath}/img/ic_target_yellowbig.png"/>
+
+                            #set ($targetTitle = $challengeTargetResult.targetTitle.split("#"))
+
+                            <div  class="text_large text_black" style="font-weight:bold">$targetTitle.get(0)</div>
+                            <div  class="text_large text_red" style="font-weight:bold">$targetTitle.get(1)</div>
+                            <div  class="text_large text_black" style="font-weight:bold">$targetTitle.get(2)</div>
+                        </div>
+
+                        #if($challengeTargetResult.targetCondition)
+                            <div class="box box-direction-left-to-right box-pack-start box-align-center" style="margin-left: 60px;margin-right: 20px;">
+                                <p class="text_middle text_grey"
+                                   style=" margin-top: 10px;">$!{challengeTargetResult.targetCondition}</p>
+                            </div>
+                        #end
+
+
+                    </div>
+
+                #end
+
+
+                <div style="background: white;padding-top:30px;padding-bottom: 70px ;margin-top: 80px">
+
+                    <div style="position:relative;float:left;text-align:left;margin-bottom: 30px;padding-left:30px;padding-right:30px;">
+
+                        <span class="text_large text_black">优胜奖励</span>
+                    </div>
+                    <HR width="100%" SIZE=10 align="center">
+                    #set ($isFirst = true)
+                    #foreach( $!{challengeRewardInfo} in $!{listChallengeRewardInfo})
+                        <div class="box box-direction-left-to-right box-pack-start box-align-center"
+                             style="padding-left: 30px;padding-right:30px; margin-top: 50px ">
+                            <div class="box box-direction-top-to-bottom box-pack-start item-flex-shrink_no">
+
+                                <img class="img_xxxlarge" src="$challengeRewardInfo.themeIcon"/>
+
+                            </div>
+
+                        <div  class="box box-direction-top-to-bottom box-pack-start item-flex-grow"  style="padding-left: 30px">
+                                <strong class="text_large text_black">$challengeRewardInfo.rewardName</strong>
+
+                            <div class="text_middle text_grey"
+                                  style="margin-top: 20px">$challengeRewardInfo.explain</div>
+                            </div>
+                        </div>
+                        #set ($isFirst = false)
+                    #end
+
+
+                </div>
+
+                <div class="box box-direction-top-to-bottom"  style="background: white;padding-top:30px;padding-bottom: 10px ;margin-top: 40px">
+
+                    <div class="box box-direction-left-to-right box-pack-center box-align-center"  style="margin-left: 30px;margin-right: 30px;">
+
+                        <div  class="item-flex-grow">
+                            <span class="text_large text_black">最新动态</span>
+                        </div>
+
+                        <div class="item-flex-grow-no" >
+                            <span class="text_small text_grey" style="position:relative;">  #if($dynamicEndTime)
+                                *截至$!{dynamicEndTime}#else 无 #end</span>
+                        </div>
+
+                    </div>
+
+
+                    <div style="text-align: center"  class="box box-direction-top-to-bottom box-pack-start box-align-center">
+                        <div class="box box-direction-left-to-right box-pack-start box-align-start">
+
+                            #foreach( $!{cardImageDynamic} in $!{listCardImageDynamic})
+                                #if($!{velocityCount}<=3)
+
+                                    <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%" class="box box-direction-top-to-bottom item-flex-grow" >
+                                        <img style="width: 280px;height: 280px" src="$cardImageDynamic.image_url"/>
+                                        <div style="width: 280px;text-align: center;margin-top: 20px ;"
+                                             class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                            <img class="img_large img-circle box item-flex-shrink_no" src="$cardImageDynamic.userFace"/>
+                                            <div class="text_middle" style="margin-left: 10px;font-weight:bold;text-align: start;;word-wrap:break-word;word-break:break-all;">$cardImageDynamic.nickName
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                #end
+                            #end
+                        </div>
+
+                        #if($!{listCardImageDynamic.size()}>3)
+                            <div class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                #foreach( $!{cardImageDynamic} in $!{listCardImageDynamic})
+                                    #if($!{velocityCount}>=4)
+
+                                        <div style="margin-top: 40px;margin-left: 20px;margin-right: 20px;float: left;width: 33%"  class="box box-direction-top-to-bottom item-flex-grow">
+                                            <img style="width: 280px;height: 280px" src="$cardImageDynamic.image_url"/>
+                                            <div style="width: 280px;text-align: center;margin-top: 20px ;"
+                                                 class="box box-direction-left-to-right box-pack-start box-align-center">
+
+                                                <img class="img_large img-circle box item-flex-shrink_no" src="$cardImageDynamic.userFace"/>
+                                                <div class="text_middle" style="margin-left: 10px;font-weight:bold;text-align: start;;word-wrap:break-word;word-break:break-all;">$cardImageDynamic.nickName
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    #end
+                                #end
+                            </div>
+
+                        #end
+
+                    </div>
+                </div>
+
+
+                <div style="background: white;padding-top:30px;padding-bottom: 30px ;margin-top: 40px">
+
+                    <div style="position:relative;float:left;text-align:left;margin-bottom: 30px;padding-left:30px;padding-right:30px;">
+
+                        <span class="text_large text_blcak" style="text-align: left">活动说明</span>
+                    </div>
+                    <HR width="100%" SIZE=10 align="center">
+                    <div style="padding-left:30px;padding-right:30px;" align="left">
+                        <p class="text_middle text_grey">$!{activity.explain}</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+    </div>
+    <div id="bb" class="bottombox box box-direction-left-to-right box-pack-start box-align-center"
+         style="padding-top: 30px;padding-bottom: 30px;padding-left:10px;padding-right:10px;background:#000000;">
+        <div>
+            <img class="img_xlarge" src="$!{staticResourcePath}/img/banana_logo.png"/>
+        </div>
+
+
+        <div class="box box-direction-top-to-bottom box-pack-start item-flex-grow" style="text-align: left;margin-left: 20px;">
+            <div class="text_middle text_white" style="font-weight:bold">香蕉打卡</div>
+
+            <div class="text_middle text_white">马上加入和TA一同挑战</div>
+        </div>
+        <div id="btn_join">
+            <img onclick="openApp($!{activity.challengeId})" class="img_btn_join" src="$!{staticResourcePath}/img/h5_btn_join.png"/>
+        </div>
+    </div>
+</div>
+<script>
+    function fixDown(boxId){
+        var box = document.getElementById(boxId);
+        var cn = box.className;
+        var bh=box.offsetTop;
+        var wh=document.documentElement.clientHeight;//这里为了兼容IE，所以不能用window.innerHeight;
+        if(bh >= wh){
+            box.className = cn + " fixed-bottom";
+        }else{
+            box.className = cn;
+        }
+    }
+    window.onload=function(){fixDown("bb");}
+    window.onresize=function(){fixDown("bb");}
+</script>
+</body>
+</html>

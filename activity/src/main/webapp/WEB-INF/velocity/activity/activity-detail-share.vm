@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<meta name="apple-itunes-app" content="app-id=965724219">
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/reset.min.css" />
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/fg.1.1.min.css?ver=20160127" />
+<title>$!{activity.activityName}</title>
+
+</head>
+<style type="text/css">
+.fg-wrap a {
+	color: #fc9e00;
+}
+</style>
+<body>
+	<div class="fg-wrap" style="margin-bottom: 60px;">
+		<h1>$!{activity.activityName}</h1>
+		<div class="ch-wrap">
+			<img src="$!{activity.coverPic}!680" alt="" title="" />
+		</div>
+		$!{activity.content}
+	</div>
+	<!--   <div class="fg-wrap"> -->
+	<!--     <ul> -->
+	<!--       <li> -->
+	<!--         <span>$dateUtil.DateToString($!{activity.startTime},'yyyy-MM-dd HH:mm')--$dateUtil.DateToString($!{activity.endTime},'yyyy-MM-dd HH:mm')</span> -->
+	<!--         <span class="fr img-fr"><img class="lazy" src="http://s1.700static.com/mobile/activity/css/img/load.gif" data-original="http://s1.700static.com/mobile/activity/css/img/fg-time.png" alt="" title=""></span> -->
+	<!--       </li> -->
+	<!--       <li> -->
+	<!--         <span>$dateUtil.DateToString($!{activity.startTime},'yyyy-MM-dd HH:mm')</span> -->
+	<!--         <span class="fr img-fr"><img class="lazy" src="http://s1.700static.com/mobile/activity/css/img/load.gif" data-original="http://s1.700static.com/mobile/activity/css/img/fg-add.png" alt="" title=""></span> -->
+	<!--       </li> -->
+	<!--       <li> -->
+	<!--         <span>$!{activity.price}元</span> -->
+	<!--         <span class="fr img-fr"><img class="lazy" src="http://s1.700static.com/mobile/activity/css/img/load.gif" data-original="http://s1.700static.com/mobile/activity/css/img/fg-price.png" alt="" title=""></span> -->
+	<!--       </li> -->
+	<!--       <li> -->
+	<!--         <span>010-83941919</span> -->
+	<!--         <span class="fr img-fr"><img class="lazy" src="http://s1.700static.com/mobile/activity/css/img/load.gif" data-original="http://s1.700static.com/mobile/activity/css/img/fg-phone.png" alt="" title=""></span> -->
+	<!--       </li> -->
+	<!--     </ul> -->
+	<!--   </div> -->
+	<!--   <div class="fg-wrap"> -->
+	<!--     <h4>活动奖品</h4> -->
+	<!--     <div class="jp-wrap"> -->
+	<!--       <img class="lazy" src="http://s1.700static.com/mobile/activity/css/img/load.gif" data-original="http://s1.700static.com/mobile/activity/img/jp.jpg" alt="" title="" /> -->
+	<!--     </div> -->
+	<!--     <p class="tc">前三名，各获得后街一辆(颜色随机)</p> -->
+	<!--   </div> -->
+	<div class="footer">
+		<a href="http://app.700bike.com/bikeapp/?from=share&tag=activity&id=${activity.activityId}"><img
+			src="http://s1.700static.com/mobile/activity/css/img/app-logo_new.png"
+			alt="" title="">下载700Bike，体验骑行生活</a>
+	</div>
+
+
+	##微信分享相关变量 
+	#set($weixin_link ="http://m.700bike.com/activity/detail-share/${activity.activityId}")
+	#set($weixin_title = "${activity.activityName}") 
+	#set($weixin_desc = "$!{activity.summary}")
+	#set($weixin_imgUrl="${activity.coverPic}!c100x100")
+
+	#parse("/common/weixinjs.vm")
+
+	<div class="down-app" style="display: none;">
+		<a href="http://app.700bike.com/bikeapp/?from=share&tag=activity&id=${activity.activityId}"><img
+			src="http://s1.700static.com/mobile/css/news/down.png" /></a>
+	</div>
+
+
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery.lazyload.js"></script>
+	<script>
+// 		$("img.lazy").lazyload({
+// 			threshold : 200
+// 		});
+	</script>
+</body>
+</html>

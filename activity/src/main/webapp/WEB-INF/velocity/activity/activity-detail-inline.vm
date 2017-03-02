@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+#include("/common/act_header.vm")
+<title>$!{activity.activityName}</title>
+</head>
+<style type="text/css">
+.fg-wrap a {
+	color: #fc9e00;
+}
+</style>
+<body>
+	<div class="fg-wrap">
+		<h1>$!{activity.activityName}</h1>
+		#*
+		<div class="ch-wrap">
+			<img src="$!{activity.coverPic}!680" alt="" title="" />
+		</div>
+		*# $!{activity.content}
+	</div>
+
+
+	<div class="fg-wrap" id="myRank"></div>
+	<div class="fg-wrap" id="userList"></div>
+
+
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery.lazyload.js"></script>
+	<script type="text/javascript">
+		var userId = "$!{userId}";
+		$("#myRank").hide();
+		$("#userList").hide();
+		function getCookieVal(offset) {
+			var endstr = document.cookie.indexOf(";", offset);
+			if (endstr == -1)
+				endstr = document.cookie.length;
+			return unescape(document.cookie.substring(offset, endstr));
+		}
+		function GetCookie(name) {
+			var arg = name + "=";
+			var alen = arg.length;
+			var clen = document.cookie.length;
+			var i = 0;
+			while (i < clen) {
+				var j = i + alen;
+				if (document.cookie.substring(i, j) == arg)
+					return getCookieVal(j);
+				i = document.cookie.indexOf(" ", i) + 1;
+				if (i == 0)
+					break;
+			}
+			return null;
+		}
+		$(function() {
+
+			isApply();
+		})
+		function isApply() {
+			var userCookie = GetCookie("BikeToken");
+			var activityId = "$!{activity.activityId}";
+			$.ajax({
+				type : 'get',
+				url : '/activity/isLoad',
+				data : {
+					userCookie : userCookie,
+					activityId : activityId
+				},
+				success : function(data) {
+					if (data == "sucess") {
+						$("#myRank").show();
+						$("#userList").show();
+						loadRank();
+					}
+				}
+			});
+		}
+
+		function loadRank() {
+			var activityId = "$!{activity.activityId}";
+			var userCookie = GetCookie("BikeToken");
+			$
+					.ajax({
+						type : 'get',
+						url : '/activity/rank',
+						data : {
+							userCookie : userCookie,
+							activityId : activityId
+						},
+						success : function(data) {
+							if (data != '') {
+								var rankhtml = "";
+								//	$("#userList").append(' <h4>活动排名(实时排名)</h4>  ');
+								var count = 1;
+								var rankCount = '';
+								var rankCount1 = '';
+								var rankCount2 = '';
+								rankCount1 += '<h4>活动排名(实时排名)</h4> <ul class="pm-wrap">';
+								var myRank = '';
+								
+								if (data[data.length-1].ranking > 50) {
+									if (data[data.length-1].userId == userId) {
+										myRank += '<h4>我的排名</h4><ul class="pm-wrap">';
+										myRank += '<li><div class="fl">';
+										myRank += '	<span class="pm-sx">'
+												+ data[data.length-1].ranking
+												+ '</span> <span class="tx-wrap"><img appclick="0" class="lazy"src="'+data[data.length-1].photo+'"data-original="'+data[data.length-1].photo+'"></span>';
+										myRank += '</div>';
+										myRank += '<div class="fr">';
+										myRank += '<span class="name">'
+												+ data[data.length-1].userName + '</span>';
+										myRank += '<span class="sd fr">'
+												+ data[data.length-1].score + 'km'
+												// 												+ data[i].target 
+												+ '</span>';
+										myRank += '	<div class="bar-wrap">';
+										myRank += '		<div style="width:'
+												+ data[data.length-1].rateScale
+												+ '%;height:.6rem;border-radius:2rem;background:#f0be00;"></div>';
+										myRank += '	</div>' + '</div>'
+												+ '</li>	 </ul>';
+
+									}
+									for (i = 0; i < data.length-1; i++) {
+
+										
+										rankCount2 += '<li><div class="fl">';
+										rankCount2 += '	<span class="pm-sx">'
+												+ data[i].ranking
+												+ '</span> <span class="tx-wrap"><img appclick="0" class="lazy"src="'+data[i].photo+'"data-original="'+data[i].photo+'"></span>';
+										rankCount2 += '</div>';
+										rankCount2 += '<div class="fr">';
+										rankCount2 += '<span class="name">'
+												+ data[i].userName + '</span>';
+										rankCount2 += '<span class="sd fr">'
+												+ data[i].score + 'km'
+												// 											+ data[i].target 
+												+ '</span>';
+										// 											rankCount2 += '	<div class="bar-wrap">';
+										// 												rankCount2 += '		<div style="width:'+ data[i].rateScale+ '%;height:.6rem;border-radius:2rem;background:#f0be00;"></div></div>';
+										rankCount2 += '</div>' + '</li>	 ';
+										count++;
+									}
+								}else{
+									for (i = 0; i < data.length; i++) {
+
+										if (data[i].userId == userId) {
+											myRank += '<h4>我的排名</h4><ul class="pm-wrap">';
+											myRank += '<li><div class="fl">';
+											myRank += '	<span class="pm-sx">'
+													+ data[i].ranking
+													+ '</span> <span class="tx-wrap"><img appclick="0" class="lazy"src="'+data[i].photo+'"data-original="'+data[i].photo+'"></span>';
+											myRank += '</div>';
+											myRank += '<div class="fr">';
+											myRank += '<span class="name">'
+													+ data[i].userName + '</span>';
+											myRank += '<span class="sd fr">'
+													+ data[i].score + 'km'
+													// 												+ data[i].target 
+													+ '</span>';
+											myRank += '	<div class="bar-wrap">';
+											myRank += '		<div style="width:'
+													+ data[i].rateScale
+													+ '%;height:.6rem;border-radius:2rem;background:#f0be00;"></div>';
+											myRank += '	</div>' + '</div>'
+													+ '</li>	 </ul>';
+
+										}
+										rankCount2 += '<li><div class="fl">';
+										rankCount2 += '	<span class="pm-sx">'
+												+ data[i].ranking
+												+ '</span> <span class="tx-wrap"><img appclick="0" class="lazy"src="'+data[i].photo+'"data-original="'+data[i].photo+'"></span>';
+										rankCount2 += '</div>';
+										rankCount2 += '<div class="fr">';
+										rankCount2 += '<span class="name">'
+												+ data[i].userName + '</span>';
+										rankCount2 += '<span class="sd fr">'
+												+ data[i].score + 'km'
+												// 											+ data[i].target 
+												+ '</span>';
+										// 											rankCount2 += '	<div class="bar-wrap">';
+										// 												rankCount2 += '		<div style="width:'+ data[i].rateScale+ '%;height:.6rem;border-radius:2rem;background:#f0be00;"></div></div>';
+										rankCount2 += '</div>' + '</li>	 ';
+										count++;
+									}
+								}
+								
+								rankCount = rankCount1 + rankCount2 + '</ul>';
+								$(myRank).appendTo("#myRank");
+								$(rankCount).appendTo("#userList");
+							}
+						}
+					});
+
+		}
+	</script>
+
+	<script>
+		$("img.lazy").lazyload({
+			threshold : 200
+		});
+	</script>
+</body>
+</html>

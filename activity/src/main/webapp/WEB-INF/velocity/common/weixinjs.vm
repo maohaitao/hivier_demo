@@ -1,0 +1,38 @@
+<script type="text/javascript">
+        function detectWeixinApi(callback) {
+
+            if (typeof window.WeixinJSBridge == 'undefined' || typeof window.WeixinJSBridge.invoke == 'undefined') {
+
+                setTimeout(function () {
+                    detectWeixinApi(callback);
+                }, 200);
+            } else {
+                callback();
+            }
+        }
+
+        detectWeixinApi(function () {
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "appid": "965724219",
+                    "img_url": "${weixin_imgUrl}",
+                    "link": "${weixin_link}",
+                    "desc": "${weixin_desc}",
+                    "title": "${weixin_title}"
+                }, function (res) {
+
+                });
+            });
+            WeixinJSBridge.on('menu:share:timeline', function (argv) {
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "appid": "965724219",
+                    "img_url": "${weixin_imgUrl}",
+                    "link": "${weixin_link}",
+                    "desc": "${weixin_desc}",
+                    "title": "${weixin_title}"
+                }, function (res) {
+
+                });
+            });
+        });
+    </script>

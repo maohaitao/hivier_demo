@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>下载700BIKE APP</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=0.5, minimum-scale=0.3, maximum-scale=2.0, user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <style>
+        html, body {
+            font-family: "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+            background-color: #fff;
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 100%;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            background-color: #f0efeb;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+<div style="position:absolute;top:15%;width:99%;text-align:center;font-size: 32px">
+    您的手机系统不支持自行车电子设备
+</div>
+<div style="position:absolute;top:30%;width:99%;text-align:center;">
+    该电子设备使用低功耗蓝牙与手机进行交互，您的手机不支持低功耗蓝牙，您需要升级手机系统到Android4.3及以上版本
+</div>
+</body>
+</html>

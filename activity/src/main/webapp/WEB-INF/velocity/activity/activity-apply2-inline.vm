@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<meta name="apple-itunes-app" content="app-id=874323793">
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/reset.min.css" />
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/fg.css" />
+<title>活动报名</title>
+</head>
+<style type="text/css">
+.red {
+	/* 	color: #fc9e00; */
+	color: red;
+}
+</style>
+<body>
+	<div class="fg-wrap bm-wrap">
+		<form id="form" name="form" method="post"
+			enctype="multipart/form-data"
+			action="/activity/apply-inline/$!{activityId}/submit">
+			<ul>
+				<li><span>姓名</span> <input type="text" name="name" id="name"
+					value="" /><a style="display: block;" id="name1" class="red">必填*</a></li>
+				<li><span>电话</span> <input type="text" name="phone" id="phone"
+					value="" /> <a style="display: block;" id="phone1" class="red">必填*</a></li>
+				<li><span>身份证号</span> <input type="text" name="card" id="card"
+					value="" /><a style="display: block;" id="cardId1" class="red">必填*</a></li>
+				<li><span>骑行公里数</span> <select name='distance' id='distance'>
+						<option value="20">20km</option>
+						<option value="30">30km</option>
+						<option value="60">60km</option>
+				</select></li>
+			</ul>
+		</form>
+		<div class="submit-btn" id="save">确认</div>
+
+	</div>
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery-1.8.3.min.js"></script>
+	<script>
+		$(".xb-btn").click(function() {
+			$(".xb-btn").removeClass("current");
+			$(this).addClass("current");
+		});
+	</script>
+	<script type="text/javascript">
+		$("#name1").hide();
+		$("#phone1").hide();
+		$("#cardId1").hide();
+		$("#save").click(function() {
+			var name = $("#name").val();
+			var phone = $("#phone").val();
+			var card = $("#card").val();
+			var distance = $("#distance").val();
+			var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+
+			if (name == "") {
+				$("#name1").html("请填写姓名！");
+				$("#name1").show();
+// 				alert("请填写姓名！");
+				return;
+			} else {
+				$("#name1").hide();
+			}
+			if (phone == "") {
+				$("#phone1").html("请填写联系您的手机号！");
+				$("#phone1").show();
+// 				alert("请填写联系您的手机号！");
+				return;
+			} else {
+				$("#phone1").hide();
+			}
+			if (!phone.match("^0?[1][3,4,5,7,8][0-9]{9}$")) {
+				$("#phone1").html("手机号格式错误！");
+				$("#phone1").show();
+// 				alert("手机号格式错误！");
+				return;
+			} else {
+				$("#phone1").hide();
+			}
+			if (card == "") {
+				$("#cardId1").html("请填写身份证号！");
+				$("#cardId1").show();
+// 				alert("请填写身份证号！");
+				return;
+			} else {
+				$("#cardId1").hide();
+			}
+			if (reg.test(card) === false) {
+				$("#cardId1").html("身份证输入不合法！");
+				$("#cardId1").show();
+// 				alert("身份证输入不合法");
+				return false;
+			}
+			form.submit();
+			
+		});
+
+		//alert($("[class='xb-btn current']").html());
+	</script>
+</body>
+</html>

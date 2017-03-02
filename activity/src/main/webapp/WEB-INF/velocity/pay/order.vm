@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<meta name="apple-itunes-app" content="app-id=965724219">
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/reset.min.css" />
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/fg.1.1.css" />
+<title>订单支付</title>
+
+</head>
+<body>
+	<div class="fg-wrap">
+		<form name="form1" id="form1" method="post"
+			enctype="multipart/form-data"
+			action="https://webpay.700store.com/ToPay.aspx" target=" _blank">
+			<input type="hidden" name="BusinessId" value="$!{BusinessId}">
+			<input type="hidden" name="PartnerId" value="$!{PartnerId}">
+			<input type="hidden" name="Amount" value="$!{Amount}"> <input
+				type="hidden" name="Des" value="$!{Des}"> <input
+				type="hidden" name="OrderNumber" value="$!{OrderNumber}"> <input
+				type="hidden" name="Key" value="$!{paykey}"> <span>支付金额:</span>$!{Amount}
+			$!{date1}
+			<button onclick="doSubmit()">现在支付</button>
+		</form>
+		<h1>活动费用支付</h1>
+		<span>支付金额:</span>$!{Amount}
+		<button id="paynow" onclick="doPay();">现在支付</button>
+	</div>
+
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery.lazyload.js"></script>
+	<script type="text/javascript">
+		function doSubmit() {
+			form1.submit();
+		}
+
+		function doPay() {
+			location.href = "http://pay.700bike.com/ToPay.aspx?PartnerId=$!{PartnerId}&BusinessId=$!{BusinessId}&key=$!{paykey}&Amount=$!{Amount}&Des=$!{Des}&OrderNumber=$!{OrderNumber}"
+
+		}
+	</script>
+
+</body>
+</html>

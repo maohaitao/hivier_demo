@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>$!{news.title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords"
+	content="700bike,bike,单车,骑行,单车旅行,死飞,自行车,单车文化,fixed gear,小径车,山地车,公路车,bmx" />
+<meta name="description" content="第一单车分享平台，骑行爱好者分享潮流单车及装备的网站。" />
+<meta id="viewport" name="viewport"
+	content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-itunes-app" content="app-id=874323793" />
+<script src="http://s1.700static.com/mobile/js/jquery-1.7.1.min.js"
+	type="text/javascript"></script>
+<script src="http://s1.700static.com/mobile/js/lazy.js"
+	type="text/javascript"></script>
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/reset.min.css" />
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/fg.1.1.min.css" />
+<link href="http://s1.700static.com/mobile/css/news.css?123456765"
+	rel="stylesheet" type="text/css" />
+<link href="http://s1.700static.com/mobile/css/thickbox.css"
+	rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+	<div class="wrap">
+
+
+
+		<style type="text/css">
+.recommend {
+	background-position: -0px -35px;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-image: url(http://s1.700static.com/mobile/css/img/z.png);
+	background-repeat: no-repeat;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+</style>
+		<div class="detail" style="padding-bottom: 3rem;">
+			<div class="detail-c">
+				<h1>$!{news.title}</h1>
+				<div class="ch-wrap">
+					<img src="$!{news.coverPic}!680" alt="" title="" />
+				</div>
+				<div class="sub">
+					$!{news.categoryName}&nbsp;&nbsp;
+					<!--                 <span>$dateUtil.DateToString(${news.publishTime},'yyyy-MM-dd HH:mm')</span></div> -->
+					<hr />
+					<div id="divThinckbox">
+						<p></p>
+						$!{news.content}
+						<p></p>
+					</div>
+
+				</div>
+			</div>
+			<style type="text/css">
+.app-download-foot {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	max-width: 640px;
+	padding: .8rem 0;
+	text-align: center;
+	font-size: 1.5rem;
+	color: #494d51;
+	background: #ffffff;
+	border-top: 1px solid #eeeeee;
+}
+
+.app-download-foot img {
+	width: 12%;
+	margin-right: 18px;
+}
+
+.app-download-foot a, .app-download-foot a:visited {
+	color: #333;
+}
+</style>
+			<div class="app-download-foot">
+				<a href="http://app.700bike.com/bikeapp/?from=share&tag=news&id=$!{news.newsId}"><img
+					src="http://s1.700static.com/mobile/activity/css/img/app-logo_new.png"
+					alt="" title="">下载700Bike，体验骑行生活</a>
+			</div>
+</body>
+</html>

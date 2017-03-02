@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>柒佰，一种生活</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords"
+	content="700bike,bike,单车,骑行,单车旅行,死飞,自行车,单车文化,fixed gear,小径车,山地车,公路车,bmx" />
+<meta name="description" content="第一单车分享平台，骑行爱好者分享潮流单车及装备的网站。" />
+<meta id="viewport" name="viewport"
+	content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-itunes-app" content="app-id=874323793" />
+<script src="http://s1.700static.com/mobile/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="http://s1.700static.com/mobile/js/lazy.js" type="text/javascript"></script>
+<link href="http://s1.700static.com/mobile/css/news.css?123456765" rel="stylesheet" type="text/css" />
+<link href="http://s1.700static.com/mobile/css/thickbox.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+	<div class="wrap">
+ #include("/common/header.vm")
+		<div style="padding: 15px; line-height: 30px; text-indent: 30px;">
+
+			<p>700Bike 隶属于柒佰（北京）科技发展有限公司，是一家快乐的移动公司，是新一代城市自行车的创造者。</p>
+			<p>700Bike 也是一个热爱自行车、热爱生活的社群，有自行车生活方式资讯的公告牌，是各种自行车主题活动的发起者。</p>
+			<p>
+				自行车是这个社群的共同语言，网站（700bike.com）、微信（微信号qibaike）、APP(700bike)、复古骑行活动Vintage
+				Ride、固齿公开赛Fixed Gear Open、多座城市的夜骑……都是这个社群的街道和广场。</p>
+			<p>700Bike
+				更是一个正在生长中的生活方式品牌，它代表着回归真实、回归简单的生活哲学。这正是柒佰（700Bike）出发和前进的理由。</p>
+			<p>
+				目前在中国北京、深圳设立了办公室。<br>公司总部在北京。
+			</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+		</div>
+		<input name="ctl00$ContentPlaceHolder1$hdPageSize" type="hidden"
+			id="ContentPlaceHolder1_hdPageSize" value="10" /> <input
+			type="hidden" value="10" id="hdCurrentPageIndex" />
+		<script type="text/javascript">
+		#*	var Loading = false;
+			$("#hdCurrentPageIndex").val(10);
+			function LoadMore(th) {
+				if (Loading) {
+					return;
+				}
+				var pageSize = 5;
+				var inputt = $("#hdCurrentPageIndex");
+				inputt.val(parseInt(inputt.val()) + pageSize);
+				var t = $(th);
+				t.html("Loading...");
+				Loading = true;
+				setTimeout(
+						function() {
+							$
+									.ajax({
+										url : "/Ajax/News.ashx",
+										data : {
+											I : inputt.val(),
+											P : pageSize,
+											C : 0,
+											rnd : new Date().getTime()
+										},
+										dataType : "json",
+										success : function(data) {
+											if (data == "") {
+												$("#loadmorebtn").hide();
+											} else {
+												$
+														.each(
+																data.data,
+																function(i, v) {
+																	if (v.isSpecial == 0) {
+																		$(
+																				'<li><a href="/news/detail/' + v.id + '"><span class="thumb-img"><img src="' + v.pic + '" width="500" height="300" alt="" /></span></a><p class="p-t"><u>'
+																						+ v.cate
+																						+ '</u><i>'
+																						+ v.day
+																						+ '</i></p><p><a href="/news/detail/' + v.id + '"><b>'
+																						+ decodeURIComponent(
+																								v.title)
+																								.replace(
+																										/\+/g,
+																										" ")
+																						+ '</b></a></p></li>')
+																				.appendTo(
+																						"#ulList");
+																	} else {
+																		$(
+																				'<li><a href="/news/special/' + v.id + '"><span class="thumb-img"><img src="' + v.pic + '" width="500" height="300" alt="" /></span></a><p class="p-t"><u><img src="/Css/News/zticon.png" width="43" /></u><i>'
+																						+ v.day
+																						+ '</i></p><p><a href="/news/special/' + v.id + '"><b>'
+																						+ decodeURIComponent(
+																								v.title)
+																								.replace(
+																										/\+/g,
+																										" ")
+																						+ '</b></a></p></li>')
+																				.appendTo(
+																						"#ulList");
+																	}
+																});
+												if (data.data.length < 5) {
+													$("#loadmorebtn").hide();
+												}
+											}
+
+											t.html("查看更多");
+											Loading = false;
+										},
+										error : function(xhr, status, errMsg) {
+											alert(decodeURI(errMsg.msg));
+										}
+									});
+						}, 500);
+			}*#
+			function detectWeixinApi(callback) {
+
+				if (typeof window.WeixinJSBridge == 'undefined'
+						|| typeof window.WeixinJSBridge.invoke == 'undefined') {
+
+					setTimeout(function() {
+						detectWeixinApi(callback);
+					}, 200);
+				} else {
+					callback();
+				}
+			}
+
+			detectWeixinApi(function() {
+				WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+					WeixinJSBridge.invoke('sendAppMessage', {
+						"appid" : "",
+						"img_url" : "http://www.700bike.com/phone.jpg",
+						"link" : "http://m.700bike.com.cn/news/index",
+						"desc" : "骑摆客是700BIKE旗下的移动app，集合资讯、工具及互动于一体。",
+						"title" : "骑摆客 -- 每个骑行者都应该安装的手机客户端"
+					}, function(res) {
+
+					});
+				});
+				WeixinJSBridge.on('menu:share:timeline', function(argv) {
+					WeixinJSBridge.invoke('shareTimeline', {
+						"appid" : "",
+						"img_url" : "http://www.700bike.com/phone.jpg",
+						"link" : "http://m.700bike.com.cn/news/index",
+						"desc" : "骑摆客是700BIKE旗下的移动app，集合资讯、工具及互动于一体。",
+						"title" : "骑摆客 -- 每个骑行者都应该安装的手机客户端"
+					}, function(res) {
+
+					});
+				});
+			});
+		</script>
+
+
+	#*	<div class="down-app" style="display: none;">
+			<a href="http://www.700bike.com/wap"><img
+				src="/css/news/down.png" /></a>
+		</div>*#
+		#include("/common/footer.vm")
+</body>
+</html>

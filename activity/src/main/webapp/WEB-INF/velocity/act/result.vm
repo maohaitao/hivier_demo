@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>挑战结果</title>
+
+    <meta charset="UTF-8">
+
+
+    <meta itemprop="image" content="http://www.banana-punch.com/image/website_logo.gif"/>
+    <link rel="icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="$!{staticResourcePath}/img/icon_72.png" type="image/x-icon"/>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/text.css" id="css" type="text/css">
+    <link rel="stylesheet" href="$!{staticResourcePath}/css/box.css" id="css" type="text/css">
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="$!{staticResourcePath}/js/myJS.js"></script>
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+
+    <!-- Demo styles -->
+
+
+    <script type="text/javascript">
+
+        function hrefAddress() {
+            var param = getUrlParam('param'); // 获得refresh参数
+            location.href = "address" + '?param=' + param;
+        }
+        function getShareUrl() {
+//            var param = getUrlParam('param'); // 获得refresh参数
+//            return "result_share"+'?param='+param;
+            var url = location.href.replace("result", "result_share");
+
+            return url;
+        }
+        function getUrlParam(param) {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+//                alert(str);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    //theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                    if (strs[i].split("=")[0] == param) {
+                        return strs[i].split("=")[1];
+                    }
+                }
+            }
+        }
+
+    </script>
+
+</head>
+<body style="background:#CC4242;">
+<!-- Swiper -->
+
+
+<div style="width: 100%;position: absolute">
+    <div style="background:#CC4242;height: 100%;padding-top:40px;padding-bottom: 40px">
+
+        #if($!{status}>=2)
+
+            <div style="position:relative;width:100%;height: 100%;padding-left: 40px;padding-right: 40px">
+
+                <div style="width: 100%;position: relative;background:white">
+                    <div id="img_div">
+                        <img width="100%" src="$!{activity.bannerImage}"/>
+                    </div>
+                    <div style="padding-left: 40px;padding-right: 40px;padding-bottom: 30px;padding-top: 30px">
+
+                        <div>
+                            <span class="text_xlarge text_black">$!{activity.challengeName}</span>
+
+
+                            <div class="box box-direction-left-to-right box-align-center">
+                                <span class="text_xlarge text_black">完赛证明</span>
+                                <img width="50px" height="50px;" src="$!{staticResourcePath}/img/results_ic_badge.png"
+                                     style="margin-left: 15px"/>
+                            </div>
+
+                        </div>
+
+                        <div class="box box-direction-left-to-right box-align-center" style="margin-top: 50px">
+                            <div class="box item-flex-grow box-align-start box-direction-top-to-bottom">
+                                <div>
+                                    <span class="text_xmiddle text_darkgrey">线上挑战赛</span>
+                                </div>
+
+                                <div class="box  box-align-center box-direction-left-to-right" style="margin-top: 20px">
+                                    <span class="text_large text_black">参赛者:</span>
+                                    <span class="text_large text_orange item-flex-grow box box-direction-left-to-right"
+                                          style="margin-left: 25px">$!{activity.nickName}</span>
+                                </div>
+
+
+                            </div>
+                            <div style="text-align: center;margin-right: 0px">
+
+                                <img height="120px" width="120px" src="$!{activity.userFace}" class="img-circle"
+                                     style="margin-top: 15px;"/>
+                            </div>
+                        </div>
+                        <div style="margin-top: 50px">
+                            <HR width="100%" SIZE=10 align="center">
+                        </div>
+
+
+                        <div class="box box-direction-top-to-bottom box-align-start" style="margin-top: 50px;">
+                            <div style="margin-bottom: 15px">
+                                <span class="text_xmiddle text_darkgrey">达成所需条件:</span>
+                            </div>
+
+
+                            #set ($isFirst = true)
+                            #foreach( $!{challengeTargetResult} in $!{listChallengeTargetResult})
+                                <div class="box box-direction-left-to-right box-align-center"
+                                     style=" #if($isFirst==true)margin-top: 20px;#else margin-top: 15px #end ">
+                                    <img width="30px" height="30px;"
+                                         src="$!{staticResourcePath}/img/results_ic_finish.png"/>
+                                <span class="text_xmiddle text_black item-flex-grow box box-direction-left-to-right"
+                                      style="margin-left: 20px">$!{challengeTargetResult.targetTitle}</span>
+                                </div>
+                                #set ($isFirst = false)
+                            #end
+
+
+                        </div>
+                        <div style="margin-top: 50px">
+                            <HR width="100px" SIZE=10 align="left">
+                        </div>
+                        <div class="box box-direction-left-to-right box-align-start">
+                            <div class="item-flex-grow">
+                                <div style="margin-top: 30px">
+                                    <span class="text_xmiddle text_darkgrey">香蕉打卡</span>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <span class="text_xmiddle text_darkgrey">线上挑战组委会颁发</span>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    #if($!{isEnd}==1)
+                                        <span class="text_middle text_grey">完赛日期:$!{formatEndTime}</span>
+                                    #else
+                                        <span class="text_middle text_grey">挑战成功日期:$!{formatEndTime}</span>
+                                    #end
+
+                                </div>
+
+
+                            </div>
+
+                            <div style="margin-right: 10px">
+                                <img src="$!{staticResourcePath}/img/results_ic_stamp.png" class="img-circle"
+                                     style="margin-top: 0px;"/>
+                            </div>
+
+
+                        </div>
+
+                        <div style="margin-bottom: 40px">
+                            <HR width="100%" SIZE=10 align="left">
+                        </div>
+
+                        <div onclick="share(getShareUrl())"
+                             style="text-align: center;margin-top: 0px;padding-bottom: 20px">
+                            <span id="share" class="text_large text_orange">告诉朋友们</span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        #end
+        <div style="position:relative;width:100%;height: 100%;padding-top:40px;padding-left: 40px;padding-right: 40px;">
+
+            <div style="position:relative;width:100%;height: 100%;background:white;">
+
+                <div style="text-align: left;padding-left: 40px;padding-right: 40px;background:#fff5f2;">
+
+                ##                    <div class="box box-direction-left-to-right box-align-center">
+                ##                        <div class="item-flex-grow" style="text-align: left;padding-top: 20px;padding-bottom: 20px">
+                ##                            <strong class="text_xlarge text_black">$!{activity.challengeName}</strong>
+                ##
+                ##                            <div style="margin-top: 10px">
+                ##                                <span class="text_xsmall text_grey">共有</span>
+                ##                                <span class="text_xsmall text_orange">$!{activity.finishCount}</span>
+                ##                                <span class="text_xsmall text_grey">人达成了挑战</span>
+                ##                                <br>
+                ##                                #if($!{status}==1)
+                ##                                    <span id="without_you" class="text_xsmall text_grey">可惜没有你的份~</span>
+                ##                                #end
+                ##
+                ##                            </div>
+                ##                        </div>
+                ##
+                ##                        <div style="text-align: center">
+                ##                            <img height="130px" width="130px" src="$!{staticResourcePath}/img/results_ic_gifts.png"/>
+                ##                        </div>
+                ##                    </div>
+
+                    <div class="box box-direction-left-to-right box-align-center">
+                        <div class="box box-direction-top-to-bottom box-align-start item-flex-grow"
+                             style="text-align: left;padding-top: 30px;padding-bottom: 30px">
+                            <strong class="text_xlarge text_black">$!{activity.challengeName}</strong>
+                            <strong class="text_xlarge text_black" style="margin-top: 0px">挑战赛</strong>
+                            <div style="margin-top: 20px">
+                                <span class="text_middle text_darkgrey">共有</span>
+                                <span class="text_middle " style="color: #f23309">$!{activity.finishCount}</span>
+                                <span class="text_middle text_darkgrey">人达成了挑战</span>
+
+
+                            </div>
+                            #if($!{status}==1)
+                                <span id="without_you" class="text_middle text_darkgrey" style="margin-top: 0px">可惜没有你的份~</span>
+                            #end
+                        </div>
+
+                        <div style="text-align: center">
+                            <img height="170px" width="170px" src="$!{staticResourcePath}/img/results_ic_gifts.png"/>
+                        </div>
+                    </div>
+
+
+                </div>
+                #if($!{status}>=1)
+                    <div id="div_reward" style="padding-left: 40px;padding-right: 40px;margin-top: 60px">
+
+                        <div style="">
+                            <span class=" text_darkgrey" style="font-size: 45px">奖品发放</span>
+                            <div>
+                                <div style="margin-top: 60px;margin-bottom: 50px">
+                                    <HR width="100%" SIZE=10 align="left">
+                                </div>
+                                <div id="div_reward_detail">
+                                    #set ($index = 0)
+                                    #foreach( $!{challengeRewardInfo} in $!{listChallengeRewardInfo})
+                                        <div>
+                                            <div class="box box-direction-left-to-right box-align-center"
+                                                 style="margin-left: 5px;margin-right: 5px">
+
+                                                <img class="box item-flex-shrink_no img-circle" height="140px"
+                                                     width="140px"
+                                                     src="$!{challengeRewardInfo.themeIcon}"/>
+
+                                                <div class="box item-flex-grow box-direction-top-to-bottom"
+                                                     style="margin-left: 20px;margin-right: 20px">
+                                                    <div class="text_black text_large">$!{challengeRewardInfo.rewardName}</div>
+                                                    <div class="text_darkgrey text_middle" style="margin-top: 15px">
+                                                        #if($!{status}==1)
+                                                            #if($!{challengeRewardInfo.rewardType}==1)
+                                                                你没能解锁…
+                                                            #else
+                                                                你没能获奖…
+                                                            #end
+
+                                                        #else
+                                                            #if($listObtain.get($index)==0)
+                                                                $ListRewardTime.get($index) 公布获奖结果
+                                                            #elseif($listObtain.get($index)==1)
+                                                                #if($!{challengeRewardInfo.rewardType}==1)
+                                                                    $ListRewardTime.get($index) 已发放到皮肤馆
+                                                                #else
+                                                                    $ListRewardTime.get($index) 赢得奖品，恭喜你成为幸运儿！
+                                                                #end
+                                                            #elseif($listObtain.get($index)==-1)
+                                                                #if($!{challengeRewardInfo.rewardType}==1)
+                                                                    你没能解锁…
+                                                                #else
+                                                                    你没能获奖…
+                                                                #end
+                                                            #end
+                                                        #end
+
+
+                                                    </div>
+                                                </div>
+
+                                                #if($!{status}==1)
+                                                    <img width="40px" height="40px;"
+                                                         src="$!{staticResourcePath}/img/results_ic_miss.png"/>
+                                                #else
+                                                    #if($listObtain.get($index)==0)
+                                                        <img class="box item-flex-shrink_no" width="40px" height="40px;"
+                                                             src="$!{staticResourcePath}/img/results_ic_geting.png"/>
+                                                    #elseif($listObtain.get($index)==1)
+                                                        <img class="box item-flex-shrink_no" width="40px" height="40px;"
+                                                             src="$!{staticResourcePath}/img/results_ic_finish.png"/>
+                                                    #elseif($listObtain.get($index)==-1)
+                                                        <img class="box item-flex-shrink_no" width="40px" height="40px;"
+                                                             src="$!{staticResourcePath}/img/results_ic_miss.png"/>
+                                                    #end
+                                                #end
+
+
+                                            </div>
+                                            <div style="margin-top: 50px;margin-bottom: 50px">
+                                                <HR width="100%" SIZE=10 align="left">
+                                            </div>
+
+                                        </div>
+                                        #set ($index = $index+1)
+                                    #end
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                #end
+
+
+                #if($!{status}==4)
+                    <div id="div_no_address"
+                         style="padding-left: 40px;padding-right: 40px;padding-top: 10px;padding-bottom: 10px">
+                        <div onclick="hrefAddress()" class="box  box-pack-start box-align-center"
+                             style="margin-left: 5px;margin-right: 5px">
+                            <span class="text_middle box-direction-left-to-right box item-flex-grow text_orange">填写实物领取奖励领取信息</span>
+                            <img width="60px" height="60px;" src="$!{staticResourcePath}/img/results_ic_next.png"/>
+                        </div>
+                        <div style="margin-top: 50px;margin-bottom: 0px">
+                            <HR width="100%" SIZE=10 align="left">
+                        </div>
+                    </div>
+                #end
+
+
+                #if($!{status}==5)
+                    <div id="div_edit_address"
+                         style="margin-top: 50px;margin-left: 40px;margin-right: 40px;padding-left: 20px;padding-right:20px;padding-top:50px;padding-bottom:50px;background:#f6f6f6;">
+
+                        <div class="box  box-pack-start box-align-center" style="margin-left: 5px;margin-right: 5px;">
+
+                            <div class="text_middle text_grey item-flex-grow">你的联系方式</div>
+                            <img onclick="hrefAddress()" width="60px" height="60px;"
+                                 src="$!{staticResourcePath}/img/results_ic_modify.png"/>
+                        </div>
+
+                        <div class="box  box-pack-start box-align-center"
+                             style="margin-left: 5px;margin-right: 5px;margin-top: 20px">
+
+                            <div class="text_middle text_grey">$!{userAddressInfo.relName}</div>
+
+                            <div class="text_middle text_grey"
+                                 style="margin-left: 20px">$!{userAddressInfo.phoneNum}</div>
+                        </div>
+
+                        <div class="box  box-pack-start box-align-center"
+                             style="margin-left: 5px;margin-right: 5px;margin-top: 20px">
+
+                            <div class="text_middle text_grey item-flex-grow box box-direction-left-to-right">$!{userAddressInfo.province} $!{userAddressInfo.city} $!{userAddressInfo.county} $!{userAddressInfo.detailAddress}</span>
+                            </div>
+                        </div>
+                    </div>
+                #end
+
+                #if($!{kaijiangStatus}==1 && $listTAccount &&  $listTAccount.size()>0)
+                    <div id="div_winner" style="padding-left: 40px;padding-right: 40px;margin-top:100px">
+
+                        <div style="border:1px solid #98989e">
+                        <span class="text_small text_black"
+                              style="float:left;margin-top:-20px;background:white; margin-left: 30px">实物奖励获得者</span>
+                            <div style="padding-top: 15px; padding-bottom: 15px;margin-top: 20px;margin-bottom: 100px">
+                                <div>
+                                    #foreach( $!{challengeRewardInfo} in $!{listTAccount})
+                                        <img height="100px" width="100px" class="img-circle"
+                                             src="$!{challengeRewardInfo.userFace}"
+                                             style="margin-top:20px;margin-left: 30px"/>
+                                    #end
+                                    <img height="80px" width="80px" src="$!{staticResourcePath}/img/results_ic_more.png"
+                                         style="margin-top:20px;margin-left: 30px"/>
+
+                                </div>
+
+                                <div style="padding-right: 20px;margin-top: 40px">
+                                    #set ($index = 0)
+                                    #set ($count = $!{listTAccount.size()})
+                                    #foreach( $!{challengeRewardInfo} in $!{listTAccount})
+                                    ##                                    #if($!fundDeteposit.status ==  0)
+                                        #if(  $index!=$!count - 1)
+                                            <span class="text_small text_grey"
+                                                  style="float:left;margin-left: 20px">$!{challengeRewardInfo.nickName}</span>
+                                        #else
+                                            <span class="text_small text_grey"
+                                                  style="float:left;margin-left: 20px">$!{challengeRewardInfo.nickName}
+                                                ...</span>
+                                        #end
+                                        #set ($index = $index+1)
+                                    #end
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                #end
+
+
+                <div class="box  box-pack-start box-direction-top-to-bottom"
+                     style="padding-left: 40px;padding-right: 40px;padding-bottom: 50px;margin-top: 20px;">
+                    <div class="text_large text_black" style="margin-top: 20px">活动说明</div>
+
+                    <div class="text_middle text_darkgrey item-flex-grow box box-direction-left-to-right"
+                         style="margin-top: 20px">$!{activity.explain}</div>
+                ##                    <div class="text_middle text_grey item-flex-grow box box-direction-left-to-right" style="margin-top: 10px">1.活动期间,参加限时挑战任务,完成目标步数,即可获得神秘礼盒.<br>2.参与比赛随机出现皮肤和实物奖励(共20份),获得奖励的用户将会收到系统消息提示.<br>3.活动结束后,奖励保留12小时,请及时领取.</div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

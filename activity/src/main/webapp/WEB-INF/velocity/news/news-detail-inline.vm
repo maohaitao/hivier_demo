@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<link href="http://s1.700static.com/mobile/css/news.css?123456765" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="wrap">
+    <div class="detail">
+        <div class="detail-c">
+            <h1>$!{news.title}</h1>
+            <div class="sub">
+                $!{news.categoryName}&nbsp;&nbsp;
+	##<span>$dateUtil.DateToString(${news.publishTime},'yyyy-MM-dd HH:mm')</span></div>
+            <hr />
+            <div id="divThinckbox">
+                <p></p>
+$!{news.content}
+<p></p>
+            </div>
+        
+    </div>
+    </div>
+	
+</body>
+</html>

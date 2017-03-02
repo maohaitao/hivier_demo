@@ -1,0 +1,17 @@
+<div class="footer">
+<div class="verion">
+    <div style="color:#696969;"><a href="http://www.700bike.com/index.aspx?from=phone">电脑版</a>&nbsp; | &nbsp;<a href="http://www.700store.com/wap/index">电商</a> | &nbsp;<a href="/about">关于我们</a> | &nbsp;<a href="/contact">联系我们</a>&nbsp;</div>
+    <div class="copyright">柒佰（700Bike）版权所有</div></div>
+    <div id="scroll" onclick="gototop()">
+    </div>
+</div>
+<script type="text/javascript">
+    function gototop() {
+        document.documentElement.scrollTop = document.body.scrollTop = 0;
+    }
+</script>
+    </div>
+    <div style="display: none;">
+        <img src="http://c.cnzz.com/wapstat.php?siteid=5919553&r=&rnd=1707571083" width="0" height="0" />
+    </div>
+    

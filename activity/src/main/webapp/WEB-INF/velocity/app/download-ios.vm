@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>下载700BIKE APP</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=0.5, minimum-scale=0.3, maximum-scale=2.0, user-scalable=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta http-equiv="refresh" content="1;URL=https://itunes.apple.com/cn/app/700bike/id965724219?l=en&mt=8"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <style>
+        html, body {
+            font-family: "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+            background-color: #fff;
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 100%;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            word-wrap: break-word;
+            background-color: #f0efeb;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+
+    <center id="message">
+    #if(${isWechatBowser} != false)
+        <img src="http://img1.700bike.com.cn/m/app/700bike_ios_weixin.png" style="width:100%"/>
+    #end
+   </center>
+<!--<div style="position:absolute;top:45%;width:99%;text-align:center;">
+    700BIKE iOS版正在AppStore审核中，请耐心等待 ~
+</div>-->
+</body>
+</html>

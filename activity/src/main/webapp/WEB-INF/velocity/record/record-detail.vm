@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
+  <meta name="format-detection" content="telephone=no">   
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="pragram" content="no-cache">
+  <meta name="apple-itunes-app" content="app-id=874323793">
+  <link rel="stylesheet" href="http://s1.700static.com/mobile/record/css/reset.min.css" />
+  <link rel="stylesheet" href="http://s1.700static.com/mobile/record/css/qyj.css" />    
+  <link href="http://s1.700static.com/mobile/record/css/photoswipe.css" type="text/css" rel="stylesheet" />  
+  <title>$!{record.nickname}的奇游记</title>
+ 
+</head>
+<body>
+  <div class="qy-wrap">
+    <div class="tx-wrap fl">
+      <img src="$!{record.photo}" alt="" title="" />
+    </div>
+    <div class="fr zw-wrap">
+      <div class="qy-title">
+        <div class="name fl">$!{record.nickname}</div>
+        <div class="time fr">$!{showTime}</div>
+      </div>
+      <p>
+        $!{record.content}
+      </p>
+      <div id="Gallery" class="gallery">
+          <div class="gallery-item">
+          </div>
+      </div>
+      <div class="z-wrap">
+        <div class="btn-wrap">
+          <img src="http://s1.700static.com/mobile/record/css/img/zan.png" alt="" title=""/>
+        </div>
+        <span>$!{record.praiseNum}</span>
+      </div>
+      <div class="pl-wrap">
+        <div class="btn-wrap">
+          <img src="http://s1.700static.com/mobile/record/css/img/pingl.png" alt="" title=""/>
+        </div>
+        <span>$!{record.commentNum}</span>
+      </div>
+    </div> 
+  </div>
+  <script type="text/javascript" src="http://s1.700static.com/mobile/record/js/jquery-1.6.2.min.js"></script>
+  <script type="text/javascript" src="http://s1.700static.com/mobile/record/js/simple-inheritance.min.js"></script>
+  <script type="text/javascript" src="http://s1.700static.com/mobile/record/js/code-photoswipe-jQuery-1.0.19.min.js"></script>
+  <script>
+  	
+  
+  $(document).ready(function(){
+	var pics = "$!{pics}";
+	var arr = pics.split(",");
+	var imgshow = "";
+	for (var i = 0; i < arr.length; i++) {
+		var h='	<a href="' + arr[i] + '"><img src="' + arr[i] + '" alt="" /></a>';
+	//	var h = '<p><img src="' + arr[i] + '"></p>';
+		imgshow += h;
+	}
+	$("#Gallery div").html(imgshow);
+	  
+    $("#Gallery a").photoSwipe();
+  }); 
+  </script>
+  
+   ##微信分享相关变量
+          #set($weixin_link = "http://m.700bike.com/record/detail/$!{record.recordId}")
+          #set($weixin_title = "$!{record.nickname}的骑游记")
+          #set($weixin_desc = "$!{record.content}")
+          #set($weixin_imgUrl="${record.pic}!c100x100")
+          
+        #parse("/common/weixinjs.vm")
+    
+</body>
+</html>

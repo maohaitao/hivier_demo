@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>柒佰，一种生活</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords"
+	content="700bike,bike,单车,骑行,单车旅行,死飞,自行车,单车文化,fixed gear,小径车,山地车,公路车,bmx" />
+<meta name="description" content="第一单车分享平台，骑行爱好者分享潮流单车及装备的网站。" />
+<meta id="viewport" name="viewport"
+	content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragram" content="no-cache" />
+<meta name="apple-itunes-app" content="app-id=965724219" />
+<script src="http://s1.700static.com/mobile/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="http://s1.700static.com/mobile/js/lazy.js" type="text/javascript"></script>
+<link href="http://s1.700static.com/mobile/css/news.css?123456765" rel="stylesheet" type="text/css" />
+<link href="http://s1.700static.com/mobile/css/thickbox.css" rel="stylesheet" type="text/css" />
+
+
+<script>
+	function popsearch() {
+		window.open(
+						'http://7.700bike.com/search',
+						'searching',
+						'height=600,width=520,top=0,left=300px,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no');
+	}
+</script>
+</head>
+<body>
+	<div class="wrap">
+
+	 #include("/common/header.vm")
+		
+		<ul class="ul-list" id="ulList">
+			<li style="padding: 5px; padding-bottom: 0px;"><a
+				href="http://www.700bike.com/anniversary2016wap"> <span
+					class="thumb-img"> <img
+						src="http://img1.700bike.com.cn/upload/others/2016/07/201607151033094014.png"
+						width="500" height="271" alt="" />
+				</span>
+			</a></li>
+
+		 #if($data.data)
+         	#foreach($one in $data.data)
+         		<li>
+         		<a href="/news/detail/${one.newsId}">
+         			<span class="thumb-img">
+         				<img src="${one.coverPic}" width="500" height="300" alt="" />
+					</span>
+				</a>
+				<p class="p-t">
+					<u> ${one.categoryName} </u> <i> ${one.displayTime} </i>
+				</p>
+				<p>
+					<a href="/news/detail/${one.newsId}"> <b> ${one.title} </b>
+					</a>
+				</p></li>
+         	#end
+         #end
+			
+		</ul>
+		
+		<div id="loadmorebtn">
+			<div class="loadmorebtn" onclick="LoadMore(this)">查看更多</div>
+		</div>
+
+		<input name="ctl00$ContentPlaceHolder1$hdPageSize" type="hidden"
+			id="ContentPlaceHolder1_hdPageSize" value="10" /> <input
+			type="hidden" value="10" id="hdCurrentPageIndex" />
+		<script type="text/javascript">
+			var Loading = false;
+			$("#hdCurrentPageIndex").val(10);
+			function LoadMore(th) {
+				if (Loading) {
+					return;
+				}
+				var pageSize = 5;
+				var category="$!{category}";
+				var inputt = $("#hdCurrentPageIndex");
+				inputt.val(parseInt(inputt.val()) + pageSize);
+				var t = $(th);
+				t.html("Loading...");
+				Loading = true;
+				setTimeout(
+						function() {
+							$
+									.ajax({
+										url : "/news/jsonlist",
+										data : {
+											start : inputt.val(),
+											size : pageSize,
+											category: category,
+											rnd : new Date().getTime()
+// 											I : inputt.val(),
+// 											P : pageSize,
+// 											C : 0,
+// 											rnd : new Date().getTime()
+										},
+										dataType : "json",
+										success : function(data) {
+											if (data == "") {
+												$("#loadmorebtn").hide();
+											} else {
+												$
+														.each(
+																data,
+																function(i, v) {
+																	if (v.isSpecial == 0) {
+																		$(
+																				'<li><a href="/news/detail/' + v.newsId + '"><span class="thumb-img"><img src="' + v.coverPic + '" width="500" height="300" alt="" /></span></a><p class="p-t"><u>'
+																						+ v.categoryName
+																						+ '</u><i>'
+																						+ v.displayTime
+																						+ '</i></p><p><a href="/news/detail/' + v.newsId + '"><b>'
+																						+ decodeURIComponent(
+																								v.title)
+																								.replace(
+																										/\+/g,
+																										" ")
+																						+ '</b></a></p></li>')
+																				.appendTo(
+																						"#ulList");
+																		
+																		$(
+																				'<li><a href="/news/special/' + v.newsId + '"><span class="thumb-img"><img src="' + v.coverPic + '" width="500" height="300" alt="" /></span></a><p class="p-t"><u><img src="http://s1.700static.com/mobile/css/news/zticon.png" width="43" /></u><i>'
+																						+ v.displayTime
+																						+ '</i></p><p><a href="/news/special/' + v.newsId + '"><b>'
+																						+ decodeURIComponent(
+																								v.title)
+																								.replace(
+																										/\+/g,
+																										" ")
+																						+ '</b></a></p></li>')
+																				.appendTo(
+																						"#ulList");
+																	} else {
+																		$(
+																				'<li><a href="/news/detail/' + v.newsId + '"><span class="thumb-img"><img src="' + v.coverPic + '" width="500" height="300" alt="" /></span></a><p class="p-t"><u>'
+																						+ v.categoryName
+																						+ '</u><i>'
+																						+ v.displayTime
+																						+ '</i></p><p><a href="/news/detail/' + v.newsId + '"><b>'
+																						+ decodeURIComponent(
+																								v.title)
+																								.replace(
+																										/\+/g,
+																										" ")
+																						+ '</b></a></p></li>')
+																				.appendTo(
+																						"#ulList");
+																	}
+																});
+												if (data.length < 5) {
+													$("#loadmorebtn").hide();
+												}
+											}
+
+											t.html("查看更多");
+											Loading = false;
+										},
+										error : function(xhr, status, errMsg) {
+											alert(decodeURI(errMsg.msg));
+										}
+									});
+						}, 500);
+			}
+
+		</script>
+		
+		  ##微信分享相关变量
+          #set($weixin_link = "http://m.700bike.com")
+          #set($weixin_title = "700Bike 柒佰，一种生活")
+          #set($weixin_desc = "")
+          #set($weixin_imgUrl="http://s1.700static.com/mobile/logo/700logo100x100.png")
+          
+          #parse("/common/weixinjs.vm")
+
+		<div class="down-app" style="display: none;">
+			<a href="http://www.700bike.com/wap"><img
+				src="http://s1.700static.com/mobile/css/news/down.png" /></a>
+		</div>
+		#include("/common/footer.vm")
+</body>
+</html>

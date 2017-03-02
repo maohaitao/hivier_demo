@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<meta name="apple-itunes-app" content="app-id=965724219">
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/reset.min.css" />
+<link rel="stylesheet"
+	href="http://s1.700static.com/mobile/activity/css/fg.1.1.css" />
+<title>$!{activity.activityName}</title>
+
+</head>
+<body>
+	<div class="fg-wrap">
+		<h1>$!{activity.activityName}活动费用支付</h1>
+
+		<span>支付金额:</span>$!{activity.price}
+		<a href="/pay/topay?activityId=${activity.activityId}&amount=$!{activity.price}">提交订单</a>
+	</div>
+
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript"
+		src="http://s1.700static.com/mobile/activity/js/jquery.lazyload.js"></script>
+	<script type="text/javascript">
+		function doPay() {
+			
+			location.href = "/pay/activity/list??display=$!{display}&recommend=$!{recommend}&activityName=$!{activityName}&page="
+					+ page;
+		}
+	</script>
+
+
+</body>
+</html>
