@@ -156,6 +156,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="container">
 		 <h3>Gallery</h3>
          <div class="gallery-info">
+
+		   #foreach( $!{prod} in $!{products})
+                 <div class="col-md-4 galry-grids ">
+                     <a class="b-link-stripe b-animate-go" target="_blank" href="http://www.baidu.com">
+                         <img src="$!{prod.icon}" class="img-responsive" alt="">
+                         <div class="b-wrapper">
+								   <span class="b-animate b-from-left    b-delay03 ">
+									   <img class="img-responsive" src="$!{prod.icon}" alt=""/>
+								   </span>
+                         </div>
+                     </a>
+                 </div>
+		   #end
+
+
+
 				<div class="col-md-4 galry-grids moments-bottom">
 					<a class="b-link-stripe b-animate-go" href="images/img15.jpg">
 						<img src="$!{staticResourcePath}/images/img15.jpg" class="img-responsive" alt="">
@@ -257,7 +273,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <div class="blog-grids">
 			 <div class="col-md-6 blog-grid">
 				 <a href="#"><img src="$!{staticResourcePath}/images/b1.jpg" class="img-responsive" alt=""/></a> 
-				 <h4><a href="#">Etiam luctus velit ac cursus lobortis.</a></h4>
+				 <h4><a href="$!{projectPath}/activity/index/blog?id=1">Etiam luctus velit ac cursus lobortis.</a></h4>
 					<span>Mar 12 | 2015</span>
 				 <p>Aenean eget eleifend nulla. Nunc vel nisi mi. Ut faucibus ornare tempus. Donec non mi et sem convallis tincidunt ac in purus. Nullam tincidunt orci elit, vitae vulputate sapien ullamcorper et. Sed ut est purus. Duis consectetur suscipit ullamcorper. Nam dictum nisl odio, eget maximus ante interdum iaculis urna sapien.</p>				 
 			 </div>

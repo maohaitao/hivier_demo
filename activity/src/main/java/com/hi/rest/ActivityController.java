@@ -6,6 +6,8 @@ import com.bike.sns.model.BasmsAccountTask;
 import com.bike.sns.service.BasmsAccountTaskService;
 import com.google.gson.JsonObject;
 import com.hi.constants.PathConstant;
+import com.hi.model.HiProduct;
+import com.hi.service.HiProductService;
 import com.sf.common.util.JsonUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 @Controller
@@ -26,22 +29,39 @@ public class ActivityController {
     //    ChallengeBusinessService challengeBusinessService;
 
     @Autowired
-    private BasmsAccountTaskService logServerInfoService;
+    private HiProductService hiProductService;
 
     private static final Logger logger = Logger.getLogger(ActivityController.class);
 
     @RequestMapping(value = "/index/index", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView index(HttpServletRequest request) {
-        System.out.println(logServerInfoService);
+        System.out.println(hiProductService);
         BasmsAccountTask accountTask = new BasmsAccountTask();
         accountTask.settId(11);
-        System.out.println(logServerInfoService.addAccountTask(accountTask));
+        List<HiProduct> list = hiProductService.queryAllHiProduct();
+        System.out.println(list);
         ModelAndView mv = new ModelAndView("/index/index");
         getMyModelAndView(mv);
+        mv.addObject("products", list);
         System.out.println("index====");
         return  mv;
     }
-        @RequestMapping(value = "/act/share", method = {RequestMethod.GET, RequestMethod.POST})
+
+    @RequestMapping(value = "/index/blog", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView blog(HttpServletRequest request, @RequestParam("id") String id) {
+        System.out.println(id);
+        BasmsAccountTask accountTask = new BasmsAccountTask();
+        accountTask.settId(11);
+        List<HiProduct> list = hiProductService.queryAllHiProduct();
+        System.out.println(list);
+        ModelAndView mv = new ModelAndView("/index/blog");
+        getMyModelAndView(mv);
+        mv.addObject("products", list);
+        System.out.println("index====");
+        return  mv;
+    }
+
+    @RequestMapping(value = "/act/share", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView getActShare(HttpServletRequest request, @RequestParam("param") String param) {
         logger.info("/act/share,param=" + param);
         try {
